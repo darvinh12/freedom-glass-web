@@ -73,6 +73,7 @@ export default function HeroSection() {
           />
         </AnimatePresence>
         <div className="hero-overlay" />
+        <div className="hero-shimmer" aria-hidden="true" />
       </div>
 
       {/* Category label top-right */}
@@ -173,6 +174,31 @@ export default function HeroSection() {
           height: 100%;
           object-fit: cover;
           object-position: center;
+        }
+        .hero-shimmer {
+          position: absolute;
+          top: -50%;
+          left: -30%;
+          width: 38%;
+          height: 200%;
+          background: linear-gradient(
+            108deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.035) 50%,
+            transparent 70%
+          );
+          transform: skewX(-12deg);
+          animation: heroShimmer 9s ease-in-out infinite;
+          pointer-events: none;
+          z-index: 1;
+        }
+        @keyframes heroShimmer {
+          0%, 80%, 100% { transform: translateX(-60px) skewX(-12deg); opacity: 0; }
+          83%            { opacity: 1; }
+          96%            { transform: translateX(calc(100vw + 200px)) skewX(-12deg); opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-shimmer { animation: none; opacity: 0; }
         }
         .hero-overlay {
           position: absolute;

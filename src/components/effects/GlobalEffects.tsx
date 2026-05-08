@@ -44,7 +44,6 @@ function CustomCursor() {
   const raf = useRef<number>(0);
 
   useEffect(() => {
-    // Only show custom cursor on pointer devices
     if (!window.matchMedia('(pointer: fine)').matches) return;
 
     const onMove = (e: MouseEvent) => {
@@ -53,11 +52,9 @@ function CustomCursor() {
     window.addEventListener('mousemove', onMove);
 
     const animate = () => {
-      // Dot follows instantly
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
       }
-      // Ring lerps behind — 0.22 feels tight but still smooth
       ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.22;
       ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.22;
       if (ringRef.current) {
@@ -67,7 +64,6 @@ function CustomCursor() {
     };
     raf.current = requestAnimationFrame(animate);
 
-    // Grow on hoverable elements
     const onEnter = () => ringRef.current?.classList.add('hover');
     const onLeave = () => ringRef.current?.classList.remove('hover');
     const targets = document.querySelectorAll('a, button, [data-cursor-hover]');
@@ -119,6 +115,96 @@ function CustomCursor() {
   );
 }
 
+function AmbientOrbs() {
+  return (
+    <>
+      <div aria-hidden="true" className="ambient-orbs">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+      </div>
+      <style>{`
+        .ambient-orbs {
+          position: fixed;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          overflow: hidden;
+        }
+        .orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+          will-change: transform;
+        }
+        .orb-1 {
+          width: 700px; height: 700px;
+          background: radial-gradient(circle, rgba(31, 96, 168, 0.14) 0%, transparent 65%);
+          top: -20%; left: -12%;
+          animation: orbDrift1 30s ease-in-out infinite;
+        }
+        .orb-2 {
+          width: 600px; height: 600px;
+          background: radial-gradient(circle, rgba(0, 40, 104, 0.12) 0%, transparent 65%);
+          bottom: -12%; right: -8%;
+          animation: orbDrift2 26s ease-in-out infinite;
+          animation-delay: -10s;
+        }
+        .orb-3 {
+          width: 450px; height: 450px;
+          background: radial-gradient(circle, rgba(31, 96, 168, 0.07) 0%, transparent 65%);
+          top: 45%; left: 55%;
+          animation: orbDrift3 38s ease-in-out infinite;
+          animation-delay: -18s;
+        }
+        @keyframes orbDrift1 {
+          0%, 100% { transform: translate(0, 0); }
+          40%       { transform: translate(55px, -45px); }
+          70%       { transform: translate(-25px, 35px); }
+        }
+        @keyframes orbDrift2 {
+          0%, 100% { transform: translate(0, 0); }
+          35%       { transform: translate(-65px, 30px); }
+          65%       { transform: translate(40px, -55px); }
+        }
+        @keyframes orbDrift3 {
+          0%, 100% { transform: translate(0, 0); }
+          30%       { transform: translate(30px, 40px); }
+          60%       { transform: translate(-40px, -20px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .orb { animation: none; }
+        }
+      `}</style>
+    </>
+  );
+}
+
+function GrainOverlay() {
+  return (
+    <>
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <filter id="pg-grain">
+          <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" result="noise" />
+          <feColorMatrix type="saturate" values="0" in="noise" />
+        </filter>
+      </svg>
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 9990,
+          pointerEvents: 'none',
+          opacity: 0.032,
+          filter: 'url(#pg-grain)',
+          background: 'white',
+        }}
+      />
+    </>
+  );
+}
+
 export default function GlobalEffects() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -142,6 +228,8 @@ export default function GlobalEffects() {
 
   return (
     <>
+      <AmbientOrbs />
+      <GrainOverlay />
       <ScrollProgress />
       <CustomCursor />
     </>

@@ -114,12 +114,37 @@ const serviceIcons: Record<string, string> = {
     border-radius: var(--radius-md);
     overflow: hidden;
     text-decoration: none;
+    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .service-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Glass-light shine sweep on hover */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: -85%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(
+      108deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 65%
+    );
+    transform: skewX(-12deg);
+    transition: left 0.75s ease;
+    pointer-events: none;
+    z-index: 4;
+  }
+  .service-card:hover::after {
+    left: 140%;
   }
 
   .card-image-wrap {

@@ -1,131 +1,90 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { portfolioCategories } from '../../data/portfolio';
+// Two-row infinite marquee — handles any image ratio without distortion
 
-const slides = portfolioCategories
-  .filter(cat => ['frameless-90', 'frameless-80', 'mirrors', 'commercial', 'angled-showers', 'frameless-doors', 'tub-glass'].includes(cat.id))
-  .flatMap(cat =>
-    cat.images.slice(0, 2).map(img => ({ ...img, category: cat.name, label: cat.label }))
+const row1 = [
+  { src: '/assets/portfolio/frameless-90/corner-showers-1.webp',       alt: 'Frameless shower 90°' },
+  { src: '/assets/portfolio/mirrors/custom-mirrors-3.webp',            alt: 'Custom mirror wall' },
+  { src: '/assets/portfolio/frameless-90/IMG_7786.jpeg.webp',          alt: 'Glass shower enclosure' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-1.webp',       alt: 'Office glass partition' },
+  { src: '/assets/portfolio/angled/Angled-showers-1.jpeg.webp',        alt: 'Custom angled shower' },
+  { src: '/assets/portfolio/frameless-90/corner-showers-3.webp',       alt: 'Corner shower glass' },
+  { src: '/assets/portfolio/mirrors/custom-mirrors-4.webp',            alt: 'Decorative mirror' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-3.webp',       alt: 'Glass wall office' },
+  { src: '/assets/portfolio/frameless-90/IMG_8014.jpeg.webp',          alt: 'Premium shower door' },
+  { src: '/assets/portfolio/angled/Custom-angled-showers-2.webp',      alt: 'Angled enclosure' },
+];
+
+const row2 = [
+  { src: '/assets/portfolio/frameless-80/Imagen-de-WhatsApp-2023-10-24-a-las-14.05.21-scaled-1.webp', alt: '80° shower enclosure' },
+  { src: '/assets/portfolio/tub/IMG_1945.jpeg.webp',                   alt: 'Glass tub enclosure' },
+  { src: '/assets/portfolio/frameless-doors/IMG_2729.jpeg-scaled.webp', alt: 'Frameless glass door' },
+  { src: '/assets/portfolio/steam/Full-HEIGHT-Steam-showers-1-1-1.jpeg.webp', alt: 'Full height steam shower' },
+  { src: '/assets/portfolio/frameless-80/IMG_7899.jpeg.webp',          alt: 'Glass shower 80°' },
+  { src: '/assets/portfolio/tub/IMG_4793-1.jpeg.webp',                 alt: 'Custom tub glass' },
+  { src: '/assets/portfolio/frameless-doors/IMG_5641-1-rotated.jpeg.webp', alt: 'Interior glass door' },
+  { src: '/assets/portfolio/wine-rooms/Custom-wine-rooms-3-rotated.jpeg.webp', alt: 'Glass wine room' },
+  { src: '/assets/portfolio/mirrors/Imagen-de-WhatsApp-2023-10-24-a-las-14.05.36-1-scaled-1.webp', alt: 'Custom bathroom mirror' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-6.webp',       alt: 'Commercial glass install' },
+];
+
+interface ImgItem { src: string; alt: string; }
+
+function MarqueeRow({ images, reverse = false }: { images: ImgItem[]; reverse?: boolean }) {
+  // Duplicate for seamless loop
+  const doubled = [...images, ...images];
+  return (
+    <div className="marquee-mask">
+      <div className={`marquee-track ${reverse ? 'reverse' : 'forward'}`}>
+        {doubled.map((img, i) => (
+          <div key={i} className="marquee-item">
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              className="marquee-img"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
-
-const INTERVAL_MS = 4500;
+}
 
 export default function PortfolioSlider() {
-  const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const total = slides.length;
-
-  const next = useCallback(() => setCurrent(i => (i + 1) % total), [total]);
-  const prev = useCallback(() => setCurrent(i => (i - 1 + total) % total), [total]);
-
-  useEffect(() => {
-    if (paused) return;
-    const t = setInterval(next, INTERVAL_MS);
-    return () => clearInterval(t);
-  }, [paused, next]);
-
   return (
-    <section className="portfolio-section" aria-labelledby="portfolio-slider-title">
-      {/* Header — outside the slider */}
+    <section className="portfolio-section" aria-labelledby="portfolio-title">
+
+      {/* Header */}
       <div className="portfolio-header">
         <p className="eyebrow">Our Work</p>
-        <h2 id="portfolio-slider-title" className="section-title">
-          Over 500 Projects Completed
+        <h2 id="portfolio-title" className="section-title">
+          500+ Projects Completed
         </h2>
         <p className="section-subtitle">
-          Each installation is measured, templated, and built with precision.
-          Premium glass, professional results.
+          Frameless showers, custom mirrors, commercial partitions, and more
+          — each project built with precision and premium materials.
         </p>
       </div>
 
-      {/* Full-width slider */}
-      <div
-        className="slider-container"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {/* Images */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            className="slide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
-          >
-            <img
-              src={slides[current].src}
-              alt={slides[current].alt}
-              className="slide-img"
-              loading="lazy"
-            />
-            {/* Dark gradient overlay */}
-            <div className="slide-overlay" />
-
-            {/* Category badge — bottom left */}
-            <div className="slide-info">
-              <span className="slide-category">{slides[current].label}</span>
-              <span className="slide-counter">{current + 1} / {total}</span>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Arrow buttons */}
-        <button className="arrow arrow-left" onClick={prev} aria-label="Previous">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-        </button>
-        <button className="arrow arrow-right" onClick={next} aria-label="Next">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </button>
-
-        {/* Dot navigation */}
-        <div className="dots" role="tablist">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              role="tab"
-              aria-selected={i === current}
-              aria-label={`Slide ${i + 1}`}
-              className={`dot ${i === current ? 'active' : ''}`}
-              onClick={() => setCurrent(i)}
-            />
-          ))}
-        </div>
-
-        {/* Progress bar */}
-        <div className="progress-track">
-          <motion.div
-            key={`prog-${current}`}
-            className="progress-fill"
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: paused ? 0 : INTERVAL_MS / 1000, ease: 'linear' }}
-          />
-        </div>
+      {/* Two-row marquee — hovers pauses both rows */}
+      <div className="marquee-wrap">
+        <MarqueeRow images={row1} reverse={false} />
+        <MarqueeRow images={row2} reverse={true} />
       </div>
 
-      {/* CTA below slider */}
+      {/* CTA */}
       <div className="portfolio-cta">
-        <a href="/portfolio" className="btn-primary">
-          View Full Portfolio
-        </a>
-        <a href="/contact" className="btn-ghost">
-          Request a Custom Project
-        </a>
+        <a href="/portfolio" className="btn-primary">View Full Portfolio</a>
+        <a href="/contact"   className="btn-ghost">Start Your Project</a>
       </div>
 
       <style>{`
         .portfolio-section {
-          padding-block: 5rem 0;
+          padding-block: 5rem;
+          overflow: hidden;
         }
         .portfolio-header {
           text-align: center;
-          max-width: 640px;
+          max-width: 600px;
           margin: 0 auto 3rem;
           padding-inline: 2rem;
         }
@@ -148,133 +107,71 @@ export default function PortfolioSlider() {
         .section-subtitle {
           color: var(--text-muted);
           line-height: 1.7;
-          font-size: 1rem;
+          font-size: 0.95rem;
         }
 
-        /* === FULL-WIDTH SLIDER === */
-        .slider-container {
-          position: relative;
-          width: 100%;
-          height: clamp(420px, 65vh, 760px);
+        /* === MARQUEE === */
+        .marquee-wrap {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .marquee-wrap:hover .marquee-track {
+          animation-play-state: paused;
+        }
+
+        .marquee-mask {
           overflow: hidden;
-          background: var(--bg-card);
-        }
-        .slide {
-          position: absolute;
-          inset: 0;
-        }
-        .slide-img {
           width: 100%;
+        }
+
+        .marquee-track {
+          display: flex;
+          gap: 0.75rem;
+          width: max-content;
+          will-change: transform;
+        }
+        .marquee-track.forward {
+          animation: scrollLeft 50s linear infinite;
+        }
+        .marquee-track.reverse {
+          animation: scrollRight 55s linear infinite;
+        }
+
+        @keyframes scrollLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scrollRight {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+
+        .marquee-item {
+          flex-shrink: 0;
+          height: clamp(220px, 28vw, 340px);
+          border-radius: var(--radius-md);
+          overflow: hidden;
+        }
+        .marquee-img {
           height: 100%;
+          width: auto;
           object-fit: cover;
-          object-position: center;
           display: block;
+          transition: transform 0.4s ease;
         }
-        .slide-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to top,
-            rgba(13, 17, 23, 0.75) 0%,
-            rgba(13, 17, 23, 0.15) 50%,
-            transparent 100%
-          );
+        .marquee-item:hover .marquee-img {
+          transform: scale(1.04);
         }
 
-        /* Category info bottom-left */
-        .slide-info {
-          position: absolute;
-          bottom: 4rem;
-          left: 2rem;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-        .slide-category {
-          font-family: var(--font-display);
-          font-size: clamp(1rem, 2vw, 1.4rem);
-          font-weight: 600;
-          color: #ffffff;
-          letter-spacing: 0.02em;
-        }
-        .slide-counter {
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.5);
-          font-weight: 500;
-        }
-
-        /* Arrows */
-        .arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 10;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: rgba(13, 17, 23, 0.65);
-          border: 1px solid rgba(255,255,255,0.2);
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: background 0.2s, border-color 0.2s, transform 0.2s;
-          backdrop-filter: blur(8px);
-        }
-        .arrow:hover {
-          background: var(--color-accent);
-          border-color: var(--color-accent);
-          transform: translateY(-50%) scale(1.1);
-        }
-        .arrow-left  { left: 1.5rem; }
-        .arrow-right { right: 1.5rem; }
-
-        /* Dots */
-        .dots {
-          position: absolute;
-          bottom: 1.5rem;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 0.5rem;
-          z-index: 10;
-        }
-        .dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          border: none;
-          background: rgba(255,255,255,0.35);
-          padding: 0;
-          transition: background 0.25s, transform 0.25s;
-        }
-        .dot.active {
-          background: var(--color-accent);
-          transform: scale(1.5);
-        }
-
-        /* Progress */
-        .progress-track {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background: rgba(255,255,255,0.1);
-          z-index: 10;
-        }
-        .progress-fill {
-          height: 100%;
-          background: var(--color-accent);
-        }
-
-        /* CTA row */
+        /* CTA */
         .portfolio-cta {
           display: flex;
           gap: 1rem;
           justify-content: center;
           flex-wrap: wrap;
-          padding: 3rem 2rem 5rem;
+          padding-top: 3rem;
+          padding-inline: 2rem;
         }
         .btn-primary {
           display: inline-flex;
@@ -306,11 +203,12 @@ export default function PortfolioSlider() {
         .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
         @media (max-width: 640px) {
-          .slider-container { height: 55vw; min-height: 300px; }
-          .slide-info { left: 1rem; bottom: 3.5rem; }
-          .arrow { width: 38px; height: 38px; }
-          .arrow-left  { left: 0.75rem; }
-          .arrow-right { right: 0.75rem; }
+          .marquee-item { height: clamp(160px, 40vw, 240px); }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation: none; }
         }
       `}</style>
     </section>

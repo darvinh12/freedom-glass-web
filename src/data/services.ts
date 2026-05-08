@@ -18,7 +18,7 @@ export const services: Service[] = [
       'Cracked window? Broken pane? Our technicians handle all residential glass repairs with speed and precision. We source the exact glass specifications for your home and restore clarity, security, and energy efficiency.',
     icon: '🏠',
     href: '/services#residential-glass',
-    coverImage: '/assets/portfolio/windows/Windows-replacement-2-1.webp',
+    coverImage: '/assets/portfolio/windows/Windows-replacement-2-1.jpeg.webp',
     features: [
       'Same-day emergency response',
       'All glass types and thicknesses',

@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* =============================================
+   DESIGN TOKENS — Freedom Glass Remodeling
+   Dark mode is DEFAULT, light is opt-in via
+   html.light class toggled by DarkModeToggle
+   ============================================= */
+@theme {
+  /* Typography */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter Tight", system-ui, sans-serif;
+
+  /* Brand palette (dark mode base) */
+  --color-surface-0: #0a0a0f;
+  --color-surface-1: #12121a;
+  --color-surface-2: #1a1a26;
+  --color-accent:    #c9a961;   /* warm gold */
+  --color-accent-hover: #d4ba7a;
+  --color-navy:      #002868;
+  --color-red:       #BF0A30;
+  --color-text:      #f5f1eb;
+  --color-text-muted: #a09b8c;
+  --color-border:    rgba(201, 169, 97, 0.15);
+
+  /* Light mode overrides (applied via html.light) */
+  --color-surface-0-light: #fafaf8;
+  --color-surface-1-light: #f0ede8;
+  --color-surface-2-light: #e8e3da;
+  --color-text-light:      #1a1a1a;
+  --color-text-muted-light: #6b6560;
+  --color-border-light:    rgba(0, 0, 0, 0.1);
+
+  /* Spacing / Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Transitions */
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === Dark mode (DEFAULT) === */
+:root {
+  --bg:          var(--color-surface-0);
+  --bg-card:     var(--color-surface-1);
+  --bg-elevated: var(--color-surface-2);
+  --text:        var(--color-text);
+  --text-muted:  var(--color-text-muted);
+  --border:      var(--color-border);
+  color-scheme: dark;
+}
+
+/* === Light mode (opt-in) === */
+html.light {
+  --bg:          var(--color-surface-0-light);
+  --bg-card:     var(--color-surface-1-light);
+  --bg-elevated: var(--color-surface-2-light);
+  --text:        var(--color-text-light);
+  --text-muted:  var(--color-text-muted-light);
+  --border:      var(--color-border-light);
+  color-scheme: light;
+}
+
+/* === Base reset === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom cursor — hide default on pointer devices */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+/* === Glassmorphism utility === */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid var(--border);
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* === Accent gradient text === */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #e8c97e 50%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Section padding === */
+.section {
+  padding-block: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section { padding-block: 4rem; }
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+/* === Selection === */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-surface-0);
+}
+
+/* === Focus visible === */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}

@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import GlobalEffects from '../components/effects/GlobalEffects';
+import type { Props as SEOProps } from '../types/seo';
+
+interface Props extends SEOProps {
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/assets/og-default.webp',
+  schema,
+} = Astro.props;
+
+const siteUrl = 'https://freedomglassremodeling.com';
+const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#organization`,
+  "name": "Freedom Glass Remodeling LLC",
+  "alternateName": "Freedom Glass",
+  "description": "Premium glass solutions: frameless shower doors, custom mirrors, commercial partitions, and more across Dallas/Fort Worth, TX.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/assets/logos/logo-icon.webp`,
+  "image": `${siteUrl}/assets/og-default.webp`,
+  "telephone": ["+19725850388", "+17867149655"],
+  "email": "freedomglasstx@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1711 Briercroft Ct #140",
+    "addressLocality": "Carrollton",
+    "addressRegion": "TX",
+    "postalCode": "75006",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 32.9537,
+    "longitude": -96.8903
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.9537,
+      "longitude": -96.8903
+    },
+    "geoRadius": "500000"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "40",
+    "bestRating": "5"
+  },
+  "sameAs": [
+    "https://www.facebook.com/freedomglassremodeling",
+    "https://www.instagram.com/freedomglassremodeling"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ]
+};
+
+const allSchemas = [
+  organizationSchema,
+  ...(Array.isArray(schema) ? schema : schema ? [schema] : [])
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FOUC prevention — must run before paint -->
+  <script is:inline>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.classList.add('light');
+    })();
+  </script>
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={fullCanonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Freedom Glass Remodeling" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/webp" href="/assets/logos/favicon-32x32.webp" sizes="32x32" />
+  <link rel="icon" type="image/webp" href="/assets/logos/favicon-icon.webp" sizes="any" />
+  <link rel="apple-touch-icon" href="/assets/logos/apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- JSON-LD Schemas -->
+  <script type="application/ld+json" set:html={JSON.stringify(allSchemas)} />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_TOKEN"}' is:inline></script>
+</head>
+<body>
+  <!-- Global visual effects: Lenis smooth scroll + custom cursor + scroll progress -->
+  <GlobalEffects client:load />
+
+  <Navbar />
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <Footer />
+</body>
+</html>

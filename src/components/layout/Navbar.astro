@@ -1,0 +1,220 @@
+---
+import DarkModeToggle from '../ui/DarkModeToggle';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="navbar" class="navbar glass">
+  <nav class="navbar-inner" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="/" class="navbar-logo" aria-label="Freedom Glass Remodeling Home">
+      <img
+        src="/assets/logos/logo-white.webp"
+        alt="Freedom Glass Remodeling"
+        width="160"
+        height="40"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="navbar-links" role="list">
+      {navLinks.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class={`nav-link ${currentPath === href || (href !== '/' && currentPath.startsWith(href)) ? 'active' : ''}`}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Right controls -->
+    <div class="navbar-controls">
+      <DarkModeToggle client:load />
+      <a href="/contact" class="btn-primary">
+        Free Quote
+      </a>
+      <!-- Mobile menu toggle -->
+      <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      {navLinks.map(({ href, label }) => (
+        <li><a href={href} class="mobile-nav-link">{label}</a></li>
+      ))}
+      <li><a href="/contact" class="btn-primary mobile-cta">Free Quote</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Scroll shrink effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar?.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    menu?.setAttribute('aria-hidden', String(isOpen));
+    menu?.classList.toggle('open');
+    btn.classList.toggle('open');
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: padding var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    transition: padding var(--transition-base);
+  }
+
+  .navbar.scrolled .navbar-inner {
+    padding-block: 0.75rem;
+  }
+
+  .navbar-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-base), background var(--transition-base);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-accent);
+    background: rgba(201, 169, 97, 0.08);
+  }
+
+  .navbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1.5rem;
+    background: var(--color-accent);
+    color: #0a0a0f;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background var(--transition-base), transform var(--transition-base);
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all var(--transition-base);
+    border-radius: 1px;
+  }
+
+  .mobile-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mobile-toggle.open span:nth-child(2) { opacity: 0; }
+  .mobile-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    padding: 0 2rem 1.5rem;
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 0.875rem 0;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-cta {
+    margin-top: 1.5rem;
+    display: block;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-links { display: none; }
+    .mobile-toggle { display: flex; }
+    .btn-primary:not(.mobile-cta) { display: none; }
+  }
+</style>

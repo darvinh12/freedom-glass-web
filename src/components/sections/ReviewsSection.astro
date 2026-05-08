@@ -1,0 +1,174 @@
+---
+import { reviews } from '../../data/reviews';
+---
+
+<section class="section reviews-section" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Client Reviews</p>
+      <h2 id="reviews-title" class="section-title">
+        What Our Clients Say
+      </h2>
+      <div class="rating-summary">
+        <span class="big-stars" aria-label="4.9 out of 5 stars">★★★★★</span>
+        <div>
+          <span class="big-rating">4.9</span>
+          <span class="rating-count"> / 5 — 40 Google Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      {reviews.map(review => (
+        <div class="review-card glass">
+          <div class="review-stars" aria-label={`${review.rating} stars`}>
+            {'★'.repeat(review.rating)}
+          </div>
+          <p class="review-text">"{review.text}"</p>
+          <footer class="review-footer">
+            <div class="review-avatar" aria-hidden="true">
+              {review.author[0]}
+            </div>
+            <div>
+              <span class="review-author">{review.author}</span>
+              <time class="review-date" datetime={review.date}>
+                {new Date(review.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+              </time>
+            </div>
+          </footer>
+        </div>
+      ))}
+    </div>
+
+    <div class="reviews-cta">
+      <a
+        href="https://g.co/kgs/freedomglass"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"
+        aria-label="Read all reviews on Google (opens in new tab)"
+      >
+        Read All 40 Reviews on Google ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section { background: var(--bg-card); }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+
+  .rating-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .big-stars { color: var(--color-accent); font-size: 1.4rem; }
+  .big-rating { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+  .rating-count { color: var(--text-muted); font-size: 0.9rem; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1024px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+  .review-card {
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .review-stars { color: var(--color-accent); font-size: 1rem; letter-spacing: 2px; }
+
+  .review-text {
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: #0a0a0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .review-author {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .review-date {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .reviews-cta { text-align: center; margin-top: 3rem; }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+</style>

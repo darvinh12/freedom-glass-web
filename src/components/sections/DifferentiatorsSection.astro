@@ -1,0 +1,158 @@
+---
+const differentiators = [
+  {
+    icon: '📐',
+    title: 'Precision Templating',
+    desc: 'Every installation starts with an on-site template. We measure twice, cut once — guaranteed perfect fit.',
+  },
+  {
+    icon: '🏆',
+    title: 'Premium Materials Only',
+    desc: 'We use exclusively 3/8" and 1/2" tempered safety glass from certified suppliers. No shortcuts.',
+  },
+  {
+    icon: '⚡',
+    title: 'Fast Turnaround',
+    desc: 'Most residential projects completed within 5–7 business days of the template appointment.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Licensed & Insured',
+    desc: 'Fully licensed in Texas. Comprehensive liability insurance protects you and your property on every job.',
+  },
+  {
+    icon: '💬',
+    title: 'Clear Communication',
+    desc: 'You\'ll always know where your project stands. Direct line to your project lead from day one.',
+  },
+  {
+    icon: '✨',
+    title: 'Clean Installation',
+    desc: 'We leave every job site cleaner than we found it. Precision cutting happens off-site to minimize mess.',
+  },
+];
+---
+
+<section class="section diff-section" aria-labelledby="diff-title">
+  <div class="container">
+    <div class="diff-layout">
+      <div class="diff-intro">
+        <p class="eyebrow">Why Choose Us</p>
+        <h2 id="diff-title" class="section-title">
+          The Freedom Glass<br />Difference
+        </h2>
+        <p class="diff-desc">
+          There's no shortage of glass companies in Dallas. Here's what sets us apart —
+          and why our clients keep coming back and referring their friends.
+        </p>
+        <a href="/contact" class="btn-primary">Get Your Free Quote</a>
+      </div>
+
+      <div class="diff-grid">
+        {differentiators.map(({ icon, title, desc }) => (
+          <div class="diff-item glass">
+            <span class="diff-icon" aria-hidden="true">{icon}</span>
+            <h3 class="diff-title">{title}</h3>
+            <p class="diff-desc-small">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .diff-section { padding-block: 6rem; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+  }
+
+  .diff-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .diff-layout { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  .diff-intro {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .diff-desc {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 1.75rem;
+    background: var(--color-accent);
+    color: #0a0a0f;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 600px) { .diff-grid { grid-template-columns: 1fr; } }
+
+  .diff-item {
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .diff-icon { font-size: 1.75rem; }
+
+  .diff-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .diff-desc-small {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+</style>

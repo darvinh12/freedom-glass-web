@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection';
+import StatsBar from '../components/sections/StatsBar.astro';
+import ServicesGrid from '../components/sections/ServicesGrid.astro';
+import PortfolioSlider from '../components/sections/PortfolioSlider';
+import ReviewsSection from '../components/sections/ReviewsSection.astro';
+import DifferentiatorsSection from '../components/sections/DifferentiatorsSection.astro';
+import ContactCTA from '../components/sections/ContactCTA.astro';
+import { reviewSchema } from '../data/reviews';
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Freedom Glass Remodeling",
+  "url": "https://freedomglassremodeling.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://freedomglassremodeling.com/portfolio?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<BaseLayout
+  title="Freedom Glass Remodeling | Custom Frameless Shower Doors & Glass Dallas TX"
+  description="Premium glass solutions in Dallas / Fort Worth. Frameless shower doors, custom mirrors, commercial partitions & window replacement. 4.9★ on Google. Free quotes."
+  canonical="/"
+  schema={[websiteSchema, reviewSchema]}
+>
+  <!-- Hero -->
+  <HeroSection client:load />
+
+  <!-- Stats bar -->
+  <StatsBar />
+
+  <!-- Services grid -->
+  <ServicesGrid />
+
+  <!-- Portfolio preview slider -->
+  <PortfolioSlider client:visible />
+
+  <!-- Google Reviews -->
+  <ReviewsSection />
+
+  <!-- Why Freedom Glass -->
+  <DifferentiatorsSection />
+
+  <!-- Contact CTA -->
+  <ContactCTA />
+</BaseLayout>

@@ -1,0 +1,174 @@
+---
+const services = [
+  { href: '/services#residential-glass', label: 'Residential Glass Repair' },
+  { href: '/services#frameless-shower', label: 'Frameless Shower Doors' },
+  { href: '/services#commercial-glass', label: 'Commercial Partitions' },
+  { href: '/services#custom-mirrors', label: 'Custom Mirrors' },
+  { href: '/services#windows', label: 'Window Replacement' },
+  { href: '/services#balustrades', label: 'Glass Balustrades' },
+];
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" aria-label="Home">
+          <img
+            src="/assets/logos/logo-white.webp"
+            alt="Freedom Glass Remodeling"
+            width="180"
+            height="45"
+            loading="lazy"
+          />
+        </a>
+        <p class="footer-tagline">
+          Premium glass solutions across Dallas / Fort Worth, TX.
+          Custom craftsmanship, exceptional results.
+        </p>
+        <div class="footer-rating">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9/5 — 40 Google Reviews</span>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-links" role="list">
+          {services.map(({ href, label }) => (
+            <li><a href={href}>{label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="footer-heading">Company</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/portfolio">Portfolio</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="footer-heading">Contact</h3>
+        <address class="footer-contact">
+          <p>1711 Briercroft Ct #140<br/>Carrollton, TX 75006</p>
+          <a href="tel:+19725850388">+1 (972) 585-0388</a>
+          <a href="tel:+17867149655">+1 (786) 714-9655</a>
+          <a href="mailto:freedomglasstx@gmail.com">freedomglasstx@gmail.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Freedom Glass Remodeling LLC. All rights reserved.</p>
+      <p>Serving Dallas, Carrollton, Plano, Irving, Frisco &amp; DFW</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    margin-top: 6rem;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .footer-brand img { margin-bottom: 1rem; }
+
+  .footer-tagline {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .footer-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .stars { color: var(--color-accent); font-size: 1rem; }
+
+  .footer-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-base);
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  .footer-contact {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .footer-contact a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .footer-contact a:hover { color: var(--color-accent); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+</style>

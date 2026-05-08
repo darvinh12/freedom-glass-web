@@ -1,0 +1,123 @@
+---
+---
+
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="cta-inner glass">
+    <div class="cta-content">
+      <p class="eyebrow">Ready to Start?</p>
+      <h2 id="cta-title" class="cta-title">
+        Get Your Free Glass Estimate Today
+      </h2>
+      <p class="cta-subtitle">
+        Serving Dallas, Carrollton, Plano, Irving, Frisco and all of DFW.
+        Most projects quoted within 24 hours.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn-primary">Request Free Quote</a>
+        <a href="tel:+19725850388" class="btn-secondary">
+          📞 Call (972) 585-0388
+        </a>
+      </div>
+      <p class="cta-note">Free estimates · No pressure · Licensed & Insured</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    padding: 5rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .cta-inner {
+    border-radius: var(--radius-lg);
+    padding: 4rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201, 169, 97, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .cta-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--color-accent);
+    color: #0a0a0f;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201, 169, 97, 0.4);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.75rem;
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  .cta-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>

@@ -3,7 +3,6 @@ import Lenis from 'lenis';
 
 function ScrollProgress() {
   const [progress, setProgress] = useState(0);
-
   useEffect(() => {
     const update = () => {
       const scrollTop = window.scrollY;
@@ -13,24 +12,11 @@ function ScrollProgress() {
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
   }, []);
-
   return (
     <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        height: '3px',
-        width: `${progress}%`,
-        background: 'var(--color-accent)',
-        zIndex: 200,
-        transition: 'width 0.1s linear',
-        pointerEvents: 'none',
-      }}
-      role="progressbar"
-      aria-valuenow={Math.round(progress)}
-      aria-valuemin={0}
-      aria-valuemax={100}
+      style={{ position: 'fixed', top: 0, left: 0, height: '3px', width: `${progress}%`,
+        background: 'var(--color-accent)', zIndex: 200, transition: 'width 0.1s linear', pointerEvents: 'none' }}
+      role="progressbar" aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}
       aria-label="Page scroll progress"
     />
   );
@@ -45,37 +31,25 @@ function CustomCursor() {
 
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
-
-    const onMove = (e: MouseEvent) => {
-      pos.current = { x: e.clientX, y: e.clientY };
-    };
+    const onMove = (e: MouseEvent) => { pos.current = { x: e.clientX, y: e.clientY }; };
     window.addEventListener('mousemove', onMove);
-
     const animate = () => {
-      if (dotRef.current) {
+      if (dotRef.current)
         dotRef.current.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
-      }
       ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.22;
       ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.22;
-      if (ringRef.current) {
+      if (ringRef.current)
         ringRef.current.style.transform = `translate(${ringPos.current.x - 20}px, ${ringPos.current.y - 20}px)`;
-      }
       raf.current = requestAnimationFrame(animate);
     };
     raf.current = requestAnimationFrame(animate);
-
     const onEnter = () => ringRef.current?.classList.add('hover');
     const onLeave = () => ringRef.current?.classList.remove('hover');
-    const targets = document.querySelectorAll('a, button, [data-cursor-hover]');
-    targets.forEach(el => {
+    document.querySelectorAll('a, button, [data-cursor-hover]').forEach(el => {
       el.addEventListener('mouseenter', onEnter);
       el.addEventListener('mouseleave', onLeave);
     });
-
-    return () => {
-      window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(raf.current);
-    };
+    return () => { window.removeEventListener('mousemove', onMove); cancelAnimationFrame(raf.current); };
   }, []);
 
   return (
@@ -83,153 +57,84 @@ function CustomCursor() {
       <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <style>{`
-        .cursor-dot {
-          position: fixed;
-          top: 0; left: 0;
-          width: 8px; height: 8px;
-          background: var(--color-accent);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          will-change: transform;
-        }
-        .cursor-ring {
-          position: fixed;
-          top: 0; left: 0;
-          width: 40px; height: 40px;
-          border: 1.5px solid var(--color-accent);
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9998;
-          will-change: transform;
-          transition: width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
-          opacity: 0.5;
-        }
-        .cursor-ring.hover {
-          width: 56px; height: 56px;
-          opacity: 1;
-          border-color: var(--color-accent-hover);
-        }
+        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:var(--color-accent);border-radius:50%;pointer-events:none;z-index:9999;will-change:transform; }
+        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid var(--color-accent);border-radius:50%;pointer-events:none;z-index:9998;will-change:transform;transition:width .2s,height .2s,opacity .2s,border-color .2s;opacity:.5; }
+        .cursor-ring.hover { width:56px;height:56px;opacity:1;border-color:var(--color-accent-hover); }
       `}</style>
     </>
   );
 }
 
+// Two ambient gradient blobs — pure radial-gradient, NO filter:blur (expensive)
 function AmbientOrbs() {
   return (
     <>
       <div aria-hidden="true" className="ambient-orbs">
         <div className="orb orb-1" />
         <div className="orb orb-2" />
-        <div className="orb orb-3" />
       </div>
       <style>{`
-        .ambient-orbs {
-          position: fixed;
-          inset: 0;
-          z-index: 0;
-          pointer-events: none;
-          overflow: hidden;
-        }
-        .orb {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(80px);
-          will-change: transform;
-        }
+        .ambient-orbs { position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden; }
+        .orb { position:absolute;border-radius:50%; }
         .orb-1 {
-          width: 700px; height: 700px;
-          background: radial-gradient(circle, rgba(31, 96, 168, 0.14) 0%, transparent 65%);
-          top: -20%; left: -12%;
-          animation: orbDrift1 30s ease-in-out infinite;
+          width:900px;height:900px;
+          background:radial-gradient(circle at center,rgba(31,96,168,.12) 0%,rgba(31,96,168,.04) 45%,transparent 70%);
+          top:-25%;left:-15%;
+          animation:orbDrift1 32s ease-in-out infinite;
         }
         .orb-2 {
-          width: 600px; height: 600px;
-          background: radial-gradient(circle, rgba(0, 40, 104, 0.12) 0%, transparent 65%);
-          bottom: -12%; right: -8%;
-          animation: orbDrift2 26s ease-in-out infinite;
-          animation-delay: -10s;
-        }
-        .orb-3 {
-          width: 450px; height: 450px;
-          background: radial-gradient(circle, rgba(31, 96, 168, 0.07) 0%, transparent 65%);
-          top: 45%; left: 55%;
-          animation: orbDrift3 38s ease-in-out infinite;
-          animation-delay: -18s;
+          width:750px;height:750px;
+          background:radial-gradient(circle at center,rgba(0,40,104,.10) 0%,rgba(0,40,104,.03) 45%,transparent 70%);
+          bottom:-20%;right:-10%;
+          animation:orbDrift2 28s ease-in-out infinite;
+          animation-delay:-14s;
         }
         @keyframes orbDrift1 {
-          0%, 100% { transform: translate(0, 0); }
-          40%       { transform: translate(55px, -45px); }
-          70%       { transform: translate(-25px, 35px); }
+          0%,100%{transform:translate(0,0);}
+          40%{transform:translate(60px,-50px);}
+          70%{transform:translate(-30px,40px);}
         }
         @keyframes orbDrift2 {
-          0%, 100% { transform: translate(0, 0); }
-          35%       { transform: translate(-65px, 30px); }
-          65%       { transform: translate(40px, -55px); }
+          0%,100%{transform:translate(0,0);}
+          35%{transform:translate(-70px,35px);}
+          65%{transform:translate(45px,-60px);}
         }
-        @keyframes orbDrift3 {
-          0%, 100% { transform: translate(0, 0); }
-          30%       { transform: translate(30px, 40px); }
-          60%       { transform: translate(-40px, -20px); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .orb { animation: none; }
-        }
+        @media(prefers-reduced-motion:reduce){.orb{animation:none;}}
       `}</style>
     </>
   );
 }
 
-function GrainOverlay() {
-  return (
-    <>
-      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
-        <filter id="pg-grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" result="noise" />
-          <feColorMatrix type="saturate" values="0" in="noise" />
-        </filter>
-      </svg>
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 9990,
-          pointerEvents: 'none',
-          opacity: 0.032,
-          filter: 'url(#pg-grain)',
-          background: 'white',
-        }}
-      />
-    </>
-  );
-}
-
 export default function GlobalEffects() {
+  // Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
-
     let rafId: number;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
+    const raf = (time: number) => { lenis.raf(time); rafId = requestAnimationFrame(raf); };
     rafId = requestAnimationFrame(raf);
+    return () => { lenis.destroy(); cancelAnimationFrame(rafId); };
+  }, []);
 
-    return () => {
-      lenis.destroy();
-      cancelAnimationFrame(rafId);
-    };
+  // Blur-reveal: scroll-triggered entrance for any .blur-reveal element
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>('.blur-reveal');
+    if (!els.length) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   return (
     <>
       <AmbientOrbs />
-      <GrainOverlay />
       <ScrollProgress />
       <CustomCursor />
     </>

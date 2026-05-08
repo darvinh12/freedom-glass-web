@@ -29,7 +29,7 @@ export default function PortfolioSlider() {
   return (
     <section className="portfolio-section" aria-labelledby="portfolio-title">
 
-      <div className="portfolio-header">
+      <div className="portfolio-header blur-reveal">
         <p className="eyebrow">Our Work</p>
         <h2 id="portfolio-title" className="section-title">
           500+ Projects Completed

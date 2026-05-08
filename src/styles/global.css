@@ -148,3 +148,19 @@ html.light .glass {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
+
+/* === Scroll-triggered blur-reveal entrance === */
+.blur-reveal {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(22px);
+  transition: opacity 0.75s ease, filter 0.75s ease, transform 0.75s ease;
+}
+.blur-reveal.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .blur-reveal { opacity: 1; filter: none; transform: none; transition: none; }
+}

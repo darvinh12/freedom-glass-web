@@ -22,7 +22,7 @@ function ScrollProgress() {
         left: 0,
         height: '3px',
         width: `${progress}%`,
-        background: 'var(--color-accent)',
+        background: 'var(--color-red)',
         zIndex: 200,
         transition: 'width 0.1s linear',
         pointerEvents: 'none',
@@ -91,7 +91,7 @@ function CustomCursor() {
           position: fixed;
           top: 0; left: 0;
           width: 8px; height: 8px;
-          background: var(--color-accent);
+          background: var(--color-red);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -101,18 +101,18 @@ function CustomCursor() {
           position: fixed;
           top: 0; left: 0;
           width: 40px; height: 40px;
-          border: 1.5px solid var(--color-accent);
+          border: 1.5px solid var(--color-red);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9998;
           will-change: transform;
           transition: width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
-          opacity: 0.6;
+          opacity: 0.5;
         }
         .cursor-ring.hover {
           width: 56px; height: 56px;
           opacity: 1;
-          border-color: var(--color-accent-hover);
+          border-color: var(--color-red-hover);
         }
       `}</style>
     </>

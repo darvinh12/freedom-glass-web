@@ -43,7 +43,7 @@ export default function HeroSection() {
         {...floatAnim}
         style={{ animationDelay: '0.8s' }}
       >
-        <span className="badge-stars" aria-hidden="true">★★★★★</span>
+        <span className="stars" aria-hidden="true">★★★★★</span>
         <span>4.9/5 — 40 Google Reviews</span>
       </motion.div>
 
@@ -119,17 +119,17 @@ export default function HeroSection() {
           inset: 0;
           background: linear-gradient(
             135deg,
-            rgba(10, 10, 15, 0.88) 0%,
-            rgba(10, 10, 15, 0.65) 50%,
-            rgba(10, 10, 15, 0.4) 100%
+            rgba(13, 17, 23, 0.90) 0%,
+            rgba(0, 40, 104, 0.50) 50%,
+            rgba(13, 17, 23, 0.35) 100%
           );
         }
         html.light .hero-overlay {
           background: linear-gradient(
             135deg,
-            rgba(250, 250, 248, 0.85) 0%,
-            rgba(250, 250, 248, 0.6) 50%,
-            rgba(250, 250, 248, 0.3) 100%
+            rgba(255, 255, 255, 0.88) 0%,
+            rgba(0, 40, 104, 0.25) 50%,
+            rgba(255, 255, 255, 0.3) 100%
           );
         }
         .hero-badge {
@@ -146,10 +146,6 @@ export default function HeroSection() {
           color: var(--text);
           z-index: 2;
         }
-        .badge-stars {
-          color: var(--color-accent);
-          font-size: 0.9rem;
-        }
         .hero-content {
           position: relative;
           z-index: 1;
@@ -163,7 +159,7 @@ export default function HeroSection() {
           font-weight: 600;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: var(--color-accent);
+          color: var(--color-gold);
           margin-bottom: 1rem;
         }
         .hero-title {
@@ -192,19 +188,19 @@ export default function HeroSection() {
           display: inline-flex;
           align-items: center;
           padding: 1rem 2rem;
-          background: var(--color-accent);
-          color: #0a0a0f;
+          background: var(--color-red);
+          color: #ffffff;
           font-weight: 700;
           font-size: 0.95rem;
           border-radius: var(--radius-sm);
           text-decoration: none;
           transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-          box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3);
+          box-shadow: 0 4px 24px rgba(191, 10, 48, 0.35);
         }
         .btn-hero-primary:hover {
-          background: var(--color-accent-hover);
+          background: var(--color-red-hover);
           transform: translateY(-2px);
-          box-shadow: 0 8px 30px rgba(201, 169, 97, 0.4);
+          box-shadow: 0 8px 32px rgba(191, 10, 48, 0.5);
         }
         .btn-hero-secondary {
           display: inline-flex;
@@ -215,14 +211,14 @@ export default function HeroSection() {
           font-weight: 600;
           font-size: 0.95rem;
           border-radius: var(--radius-sm);
-          border: 1.5px solid var(--border);
+          border: 1.5px solid rgba(255,255,255,0.3);
           text-decoration: none;
           transition: border-color 0.2s, color 0.2s, background 0.2s;
         }
         .btn-hero-secondary:hover {
-          border-color: var(--color-accent);
-          color: var(--color-accent);
-          background: rgba(201, 169, 97, 0.06);
+          border-color: var(--color-gold);
+          color: var(--color-gold);
+          background: rgba(255, 215, 0, 0.06);
         }
         .hero-trust {
           display: flex;
@@ -242,7 +238,7 @@ export default function HeroSection() {
         .scroll-dot {
           width: 24px;
           height: 40px;
-          border: 2px solid rgba(201, 169, 97, 0.4);
+          border: 2px solid rgba(191, 10, 48, 0.4);
           border-radius: 12px;
           position: relative;
         }
@@ -254,7 +250,7 @@ export default function HeroSection() {
           transform: translateX(-50%);
           width: 4px;
           height: 8px;
-          background: var(--color-accent);
+          background: var(--color-red);
           border-radius: 2px;
           animation: scrollDot 1.5s ease-in-out infinite;
         }

@@ -93,7 +93,7 @@ export default function PortfolioSlider() {
           font-weight: 600;
           letter-spacing: 0.15em;
           text-transform: uppercase;
-          color: var(--color-accent);
+          color: var(--color-gold);
           margin-bottom: 0.75rem;
         }
         .section-title {
@@ -158,7 +158,7 @@ export default function PortfolioSlider() {
           padding: 0;
           transition: border-color 0.2s;
         }
-        .thumb.active { border-color: var(--color-accent); }
+        .thumb.active { border-color: var(--color-red); }
         .thumb img { width: 100%; height: 100%; object-fit: cover; }
         .slider-controls {
           position: absolute;
@@ -187,7 +187,7 @@ export default function PortfolioSlider() {
           transform: translateX(-50%);
         }
         .ctrl-btn:last-child { transform: translateX(50%); }
-        .ctrl-btn:hover { background: var(--color-accent); border-color: var(--color-accent); color: #0a0a0f; }
+        .ctrl-btn:hover { background: var(--color-red); border-color: var(--color-red); color: #ffffff; }
         .portfolio-cta {
           text-align: center;
           margin-top: 2.5rem;
@@ -196,15 +196,16 @@ export default function PortfolioSlider() {
           display: inline-flex;
           align-items: center;
           padding: 0.875rem 2rem;
-          background: var(--color-accent);
-          color: #0a0a0f;
+          background: var(--color-red);
+          color: #ffffff;
           border-radius: var(--radius-sm);
           text-decoration: none;
           font-weight: 700;
           font-size: 0.9rem;
           transition: background 0.2s, transform 0.2s;
+          box-shadow: 0 4px 20px rgba(191, 10, 48, 0.3);
         }
-        .btn-accent:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+        .btn-accent:hover { background: var(--color-red-hover); transform: translateY(-2px); }
       `}</style>
     </section>
   );

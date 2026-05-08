@@ -82,7 +82,7 @@ export const services: Service[] = [
       'Upgrade aging windows with modern, energy-efficient units. We handle full window replacement from single panes to multi-panel picture windows, matching your home\'s architectural style.',
     icon: '🪟',
     href: '/services#windows',
-    coverImage: '/assets/portfolio/windows/42b1f654-2621-4314-af7d-b6a4cc8a7160.webp',
+    coverImage: '/assets/portfolio/windows/Windows-replacement-2-1.jpeg.webp',
     features: [
       'Double and triple-pane insulated units',
       'Low-E coatings for Texas heat',

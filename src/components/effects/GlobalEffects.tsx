@@ -22,7 +22,7 @@ function ScrollProgress() {
         left: 0,
         height: '3px',
         width: `${progress}%`,
-        background: 'var(--color-red)',
+        background: 'var(--color-accent)',
         zIndex: 200,
         transition: 'width 0.1s linear',
         pointerEvents: 'none',
@@ -57,9 +57,9 @@ function CustomCursor() {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
       }
-      // Ring lerps behind
-      ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.12;
-      ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.12;
+      // Ring lerps behind — 0.22 feels tight but still smooth
+      ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.22;
+      ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.22;
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ringPos.current.x - 20}px, ${ringPos.current.y - 20}px)`;
       }
@@ -91,7 +91,7 @@ function CustomCursor() {
           position: fixed;
           top: 0; left: 0;
           width: 8px; height: 8px;
-          background: var(--color-red);
+          background: var(--color-accent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9999;
@@ -101,7 +101,7 @@ function CustomCursor() {
           position: fixed;
           top: 0; left: 0;
           width: 40px; height: 40px;
-          border: 1.5px solid var(--color-red);
+          border: 1.5px solid var(--color-accent);
           border-radius: 50%;
           pointer-events: none;
           z-index: 9998;
@@ -112,7 +112,7 @@ function CustomCursor() {
         .cursor-ring.hover {
           width: 56px; height: 56px;
           opacity: 1;
-          border-color: var(--color-red-hover);
+          border-color: var(--color-accent-hover);
         }
       `}</style>
     </>

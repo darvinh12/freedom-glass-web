@@ -2,36 +2,36 @@
 
 /* =============================================
    DESIGN TOKENS — Freedom Glass Remodeling
-   Brand: Navy #002868 · Red #BF0A30 · Gold #FFD700
-   Dark mode is DEFAULT, light is opt-in via html.light
+   Cambia colores SOLO aquí. El resto del sitio
+   los hereda automáticamente via var(--color-*).
+
+   Dark mode es DEFAULT. Light toggle via html.light
    ============================================= */
 @theme {
   /* Typography */
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter Tight", system-ui, sans-serif;
 
-  /* === ORIGINAL BRAND COLORS === */
-  --color-navy:       #002868;          /* primary navy blue */
-  --color-red:        #BF0A30;          /* American red — main CTA */
-  --color-red-hover:  #d41135;
-  --color-gold:       #FFD700;          /* gold — stars, highlights */
-  --color-gold-dim:   #E6B800;
+  /* === BRAND COLORS (originales) === */
+  --color-navy:         #002868;    /* Navy patriótico */
+
+  /* === ACCENT SYSTEM (cambia aquí para probar paletas) === */
+  --color-accent:       #2A6DB5;    /* Steel blue — botones, CTAs */
+  --color-accent-hover: #3580CC;    /* Hover state */
+  --color-silver:       #94A9C9;    /* Silver-blue — eyebrows, detalles */
+  --color-gold:         #C9A84C;    /* Champagne gold — estrellas */
 
   /* Dark mode surfaces */
-  --color-surface-0:  #0D1117;          /* page bg */
-  --color-surface-1:  #161B22;          /* cards */
-  --color-surface-2:  #1C2128;          /* elevated */
+  --color-surface-0:  #0D1117;
+  --color-surface-1:  #161B22;
+  --color-surface-2:  #1C2128;
 
   /* Text */
   --color-text:       #F0F6FC;
   --color-text-muted: #8b949e;
 
-  /* Border (navy tint) */
-  --color-border:     rgba(0, 40, 104, 0.3);
-
-  /* Convenience aliases — components use these */
-  --color-accent:       #BF0A30;
-  --color-accent-hover: #d41135;
+  /* Border (sutil, tono navy) */
+  --color-border:     rgba(42, 109, 181, 0.2);
 
   /* Light mode */
   --color-surface-0-light: #ffffff;
@@ -39,7 +39,7 @@
   --color-surface-2-light: #eaeef2;
   --color-text-light:      #1f2328;
   --color-text-muted-light: #656d76;
-  --color-border-light:    rgba(0, 40, 104, 0.15);
+  --color-border-light:    rgba(42, 109, 181, 0.15);
 
   /* Spacing / Radius */
   --radius-sm: 8px;
@@ -94,22 +94,22 @@ html {
   * { cursor: none !important; }
 }
 
-/* === Glassmorphism utility — subtle navy tint === */
+/* === Glassmorphism utility — sutil tono navy === */
 .glass {
-  background: rgba(0, 40, 104, 0.08);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  background: rgba(0, 40, 104, 0.10);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
   border: 1px solid var(--border);
 }
 
 html.light .glass {
-  background: rgba(255, 255, 255, 0.75);
-  border-color: rgba(0, 40, 104, 0.12);
+  background: rgba(255, 255, 255, 0.80);
+  border-color: rgba(42, 109, 181, 0.12);
 }
 
-/* === Gradient text — Gold → Red === */
+/* === Gradient text — Blue → Silver/Ice === */
 .gradient-text {
-  background: linear-gradient(135deg, #FFD700 0%, #E6B800 40%, #BF0A30 100%);
+  background: linear-gradient(135deg, #2A6DB5 0%, #7BAED6 50%, #E0E8F4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -118,16 +118,6 @@ html.light .glass {
 /* === Stars utility === */
 .stars {
   color: var(--color-gold);
-}
-
-/* === Eyebrow utility === */
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: 0.75rem;
 }
 
 /* === Section padding === */
@@ -143,18 +133,18 @@ html.light .glass {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-red);
+  background: var(--color-accent);
   border-radius: 3px;
 }
 
 /* === Selection === */
 ::selection {
-  background: var(--color-red);
+  background: var(--color-accent);
   color: #ffffff;
 }
 
 /* === Focus visible === */
 :focus-visible {
-  outline: 2px solid var(--color-red);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }

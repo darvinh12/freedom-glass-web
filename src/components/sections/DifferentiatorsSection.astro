@@ -2,37 +2,31 @@
 const differentiators = [
   {
     n: '01',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="1.5"/><line x1="6" y1="7" x2="6" y2="12.5"/><line x1="10" y1="7" x2="10" y2="10.5"/><line x1="14" y1="7" x2="14" y2="12.5"/><line x1="18" y1="7" x2="18" y2="10.5"/></svg>`,
     title: 'Precision Templating',
     desc: 'Every installation starts with an on-site template. We measure twice, cut once — guaranteed perfect fit.',
   },
   {
     n: '02',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 12 15 2 8.5"/><polyline points="2 12 12 18.5 22 12"/><polyline points="2 15.5 12 22 22 15.5"/></svg>`,
     title: 'Premium Materials Only',
     desc: 'We use exclusively 3/8" and 1/2" tempered safety glass from certified suppliers. No shortcuts.',
   },
   {
     n: '03',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 15.5"/></svg>`,
     title: 'Fast Turnaround',
     desc: 'Most residential projects completed within 5–7 business days of the template appointment.',
   },
   {
     n: '04',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8.5 3.75v6.25c0 4.9-3.5 9.5-8.5 10.75C7.5 21.5 4 16.9 4 12V5.75z"/><polyline points="9 12 11 14 15 10"/></svg>`,
     title: 'Licensed & Insured',
     desc: 'Fully licensed in Texas. Comprehensive liability insurance protects you and your property on every job.',
   },
   {
     n: '05',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="13" x2="12" y2="13"/></svg>`,
     title: 'Clear Communication',
     desc: "You'll always know where your project stands. Direct line to your project lead from day one.",
   },
   {
     n: '06',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.22 5.22l2.12 2.12M17.66 17.66l2.12 2.12M3 12h3M18 12h3M4.22 18.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>`,
     title: 'Clean Installation',
     desc: 'We leave every job site cleaner than we found it. Precision cutting happens off-site to minimize mess.',
   },
@@ -57,11 +51,10 @@ const differentiators = [
       </div>
 
       <div class="diff-list">
-        {differentiators.map(({ n, icon, title, desc }, i) => (
+        {differentiators.map(({ n, title, desc }, i) => (
           <article class="diff-item" style={`--i:${i}`}>
             <span class="diff-n" aria-hidden="true">{n}</span>
             <div class="diff-body">
-              <div class="diff-icon" set:html={icon} aria-hidden="true" />
               <h3 class="diff-title">{title}</h3>
               <p class="diff-desc">{desc}</p>
             </div>
@@ -108,7 +101,6 @@ const differentiators = [
     .diff-intro { position: static; }
   }
 
-  /* ── Intro ── */
   .diff-intro {
     position: sticky;
     top: 8rem;
@@ -158,7 +150,7 @@ const differentiators = [
     border-radius: var(--radius-sm);
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 4px 20px rgba(42, 109, 181, 0.28);
+    box-shadow: 0 4px 20px rgba(31, 96, 168, 0.28);
   }
 
   .btn-primary:hover {
@@ -200,22 +192,15 @@ const differentiators = [
     font-weight: 700;
     letter-spacing: 0.04em;
     color: var(--color-accent);
-    opacity: 0.5;
-    padding-top: 0.3rem;
+    opacity: 0.45;
+    padding-top: 0.2rem;
     line-height: 1;
   }
 
   .diff-body {
     display: flex;
     flex-direction: column;
-    gap: 0.375rem;
-  }
-
-  .diff-icon {
-    color: var(--color-accent);
-    margin-bottom: 0.35rem;
-    display: flex;
-    align-items: center;
+    gap: 0.4rem;
   }
 
   .diff-title {
@@ -230,15 +215,11 @@ const differentiators = [
     font-size: 0.875rem;
     color: var(--text-muted);
     line-height: 1.65;
-    max-width: 46ch;
+    max-width: 48ch;
     margin: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .diff-item {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+    .diff-item { opacity: 1; transform: none; transition: none; }
   }
 </style>

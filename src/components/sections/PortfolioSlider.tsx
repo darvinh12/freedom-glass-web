@@ -1,6 +1,6 @@
-// Two-row infinite marquee — handles any image ratio without distortion
+// Single-row infinite marquee — natural aspect ratio, no distortion
 
-const row1 = [
+const images = [
   { src: '/assets/portfolio/frameless-90/corner-showers-1.webp',       alt: 'Frameless shower 90°' },
   { src: '/assets/portfolio/mirrors/custom-mirrors-3.webp',            alt: 'Custom mirror wall' },
   { src: '/assets/portfolio/frameless-90/IMG_7786.jpeg.webp',          alt: 'Glass shower enclosure' },
@@ -11,9 +11,6 @@ const row1 = [
   { src: '/assets/portfolio/commercial/Commercial-Glass-3.webp',       alt: 'Glass wall office' },
   { src: '/assets/portfolio/frameless-90/IMG_8014.jpeg.webp',          alt: 'Premium shower door' },
   { src: '/assets/portfolio/angled/Custom-angled-showers-2.webp',      alt: 'Angled enclosure' },
-];
-
-const row2 = [
   { src: '/assets/portfolio/frameless-80/Imagen-de-WhatsApp-2023-10-24-a-las-14.05.21-scaled-1.webp', alt: '80° shower enclosure' },
   { src: '/assets/portfolio/tub/IMG_1945.jpeg.webp',                   alt: 'Glass tub enclosure' },
   { src: '/assets/portfolio/frameless-doors/IMG_2729.jpeg-scaled.webp', alt: 'Frameless glass door' },
@@ -26,34 +23,12 @@ const row2 = [
   { src: '/assets/portfolio/commercial/Commercial-Glass-6.webp',       alt: 'Commercial glass install' },
 ];
 
-interface ImgItem { src: string; alt: string; }
-
-function MarqueeRow({ images, reverse = false }: { images: ImgItem[]; reverse?: boolean }) {
-  // Duplicate for seamless loop
-  const doubled = [...images, ...images];
-  return (
-    <div className="marquee-mask">
-      <div className={`marquee-track ${reverse ? 'reverse' : 'forward'}`}>
-        {doubled.map((img, i) => (
-          <div key={i} className="marquee-item">
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              className="marquee-img"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const doubled = [...images, ...images];
 
 export default function PortfolioSlider() {
   return (
     <section className="portfolio-section" aria-labelledby="portfolio-title">
 
-      {/* Header */}
       <div className="portfolio-header">
         <p className="eyebrow">Our Work</p>
         <h2 id="portfolio-title" className="section-title">
@@ -65,13 +40,21 @@ export default function PortfolioSlider() {
         </p>
       </div>
 
-      {/* Two-row marquee — hovers pauses both rows */}
-      <div className="marquee-wrap">
-        <MarqueeRow images={row1} reverse={false} />
-        <MarqueeRow images={row2} reverse={true} />
+      <div className="marquee-mask">
+        <div className="marquee-track">
+          {doubled.map((img, i) => (
+            <div key={i} className="marquee-item">
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="marquee-img"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* CTA */}
       <div className="portfolio-cta">
         <a href="/portfolio" className="btn-primary">View Full Portfolio</a>
         <a href="/contact"   className="btn-ghost">Start Your Project</a>
@@ -111,15 +94,6 @@ export default function PortfolioSlider() {
         }
 
         /* === MARQUEE === */
-        .marquee-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-        }
-        .marquee-wrap:hover .marquee-track {
-          animation-play-state: paused;
-        }
-
         .marquee-mask {
           overflow: hidden;
           width: 100%;
@@ -130,21 +104,16 @@ export default function PortfolioSlider() {
           gap: 0.75rem;
           width: max-content;
           will-change: transform;
+          animation: scrollLeft 70s linear infinite;
         }
-        .marquee-track.forward {
-          animation: scrollLeft 50s linear infinite;
-        }
-        .marquee-track.reverse {
-          animation: scrollRight 55s linear infinite;
+
+        .marquee-mask:hover .marquee-track {
+          animation-play-state: paused;
         }
 
         @keyframes scrollLeft {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
-        }
-        @keyframes scrollRight {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
         }
 
         .marquee-item {
@@ -184,7 +153,7 @@ export default function PortfolioSlider() {
           font-weight: 700;
           font-size: 0.9rem;
           transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 4px 20px rgba(42, 109, 181, 0.35);
+          box-shadow: 0 4px 20px rgba(31, 96, 168, 0.35);
         }
         .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
         .btn-ghost {
@@ -206,7 +175,6 @@ export default function PortfolioSlider() {
           .marquee-item { height: clamp(160px, 40vw, 240px); }
         }
 
-        /* Respect reduced motion */
         @media (prefers-reduced-motion: reduce) {
           .marquee-track { animation: none; }
         }

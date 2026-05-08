@@ -16,8 +16,8 @@
   --color-navy:         #002868;    /* Navy patriótico */
 
   /* === ACCENT SYSTEM (cambia aquí para probar paletas) === */
-  --color-accent:       #2A6DB5;    /* Steel blue — botones, CTAs */
-  --color-accent-hover: #3580CC;    /* Hover state */
+  --color-accent:       #1F60A8;    /* Steel blue oscuro — botones, CTAs */
+  --color-accent-hover: #2A6DB5;    /* Hover state */
   --color-silver:       #94A9C9;    /* Silver-blue — eyebrows, detalles */
   --color-gold:         #C9A84C;    /* Champagne gold — estrellas */
 
@@ -31,7 +31,7 @@
   --color-text-muted: #8b949e;
 
   /* Border (sutil, tono navy) */
-  --color-border:     rgba(42, 109, 181, 0.2);
+  --color-border:     rgba(31, 96, 168, 0.2);
 
   /* Light mode */
   --color-surface-0-light: #ffffff;
@@ -39,7 +39,7 @@
   --color-surface-2-light: #eaeef2;
   --color-text-light:      #1f2328;
   --color-text-muted-light: #656d76;
-  --color-border-light:    rgba(42, 109, 181, 0.15);
+  --color-border-light:    rgba(31, 96, 168, 0.15);
 
   /* Spacing / Radius */
   --radius-sm: 8px;

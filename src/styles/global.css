@@ -93,6 +93,10 @@ html {
 @media (pointer: fine) {
   * { cursor: none !important; }
 }
+/* Hide cursor elements on touch/coarse devices */
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+}
 
 /* === Glassmorphism utility — sutil tono navy === */
 .glass {

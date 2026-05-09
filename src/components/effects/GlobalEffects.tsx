@@ -106,8 +106,9 @@ function AmbientOrbs() {
 }
 
 export default function GlobalEffects() {
-  // Lenis smooth scroll
+  // Lenis smooth scroll — only on pointer:fine (mouse) devices
   useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches) return;
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

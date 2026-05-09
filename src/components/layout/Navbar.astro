@@ -17,11 +17,16 @@ const currentPath = Astro.url.pathname;
     <!-- Logo -->
     <a href="/" class="navbar-logo" aria-label="Freedom Glass Remodeling Home">
       <img
-        src="/assets/logos/logo-white-lg.webp"
-        alt="Freedom Glass Remodeling"
+        src="/assets/logos/favicon-icon.webp"
+        alt=""
         class="navbar-logo-img"
         loading="eager"
+        aria-hidden="true"
       />
+      <span class="navbar-brand">
+        <span class="brand-main">Freedom Glass</span>
+        <span class="brand-sub">Remodeling</span>
+      </span>
     </a>
 
     <!-- Desktop links -->
@@ -124,17 +129,47 @@ const currentPath = Astro.url.pathname;
   .navbar-logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     flex-shrink: 0;
+    text-decoration: none;
   }
 
   .navbar-logo-img {
-    height: 52px;
+    height: 62px;
     width: auto;
     transition: height var(--transition-base);
+    flex-shrink: 0;
   }
 
   .navbar.scrolled .navbar-logo-img {
-    height: 40px;
+    height: 46px;
+  }
+
+  .navbar-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand-main {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  .brand-sub {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-silver);
+  }
+
+  @media (max-width: 768px) {
+    .navbar-logo-img { height: 48px; }
+    .brand-main { font-size: 1rem; }
   }
 
   .navbar-links {
@@ -238,6 +273,5 @@ const currentPath = Astro.url.pathname;
     .navbar-links { display: none; }
     .mobile-toggle { display: flex; }
     .btn-primary:not(.mobile-cta) { display: none; }
-    .navbar-logo-img { height: 42px; }
   }
 </style>

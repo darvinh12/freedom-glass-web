@@ -1,0 +1,240 @@
+---
+---
+
+<section class="story-home" aria-labelledby="home-story-title">
+
+  <!-- Venezuela map parallax background -->
+  <div class="vz-map-wrap" aria-hidden="true">
+    <div class="vz-map"></div>
+  </div>
+
+  <!-- Diagonal texture (consistent with site) -->
+  <div class="story-texture" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="story-grid">
+
+      <!-- Left column: visual anchors -->
+      <aside class="story-left blur-reveal">
+        <div class="vz-badge">
+          <img src="/assets/flag-venezuela.svg" alt="Venezuelan flag" class="vz-flag-img" />
+          <span>Venezuelan-Owned Business</span>
+        </div>
+
+        <div class="founding-year">
+          <span class="year-num gradient-text">2018</span>
+          <span class="year-label">Founded in Dallas, TX</span>
+        </div>
+
+        <blockquote class="pull-quote">
+          "We brought the precision of Venezuelan craftsmanship to Texas — and we've never stopped raising the bar."
+        </blockquote>
+      </aside>
+
+      <!-- Right column: narrative -->
+      <div class="story-right blur-reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2 id="home-story-title" class="story-heading">
+          From Caracas to Dallas —<br/>by way of a dream.
+        </h2>
+        <div class="story-body">
+          <p>
+            Freedom Glass Remodeling was born from a dream carried thousands of miles — from the streets of Venezuela to the heart of Dallas. Our founders arrived in Texas with a work ethic forged in a culture that values family, craftsmanship, and relentless perseverance.
+          </p>
+          <p>
+            Starting as a two-person team in 2018, word spread fast: this was a company that showed up on time, communicated clearly, and delivered results that spoke for themselves. Today, we serve hundreds of clients across all of DFW.
+          </p>
+        </div>
+        <a href="/about" class="btn-story">Read our full story →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('.story-home');
+  const mapWrap = document.querySelector<HTMLElement>('.vz-map-wrap');
+
+  if (section && mapWrap && window.matchMedia('(pointer: fine)').matches) {
+    let pending = false;
+    const update = () => {
+      const rect = section.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      if (rect.top < viewH && rect.bottom > 0) {
+        const progress = (viewH - rect.top) / (viewH + rect.height);
+        mapWrap.style.transform = `translateY(${(progress - 0.5) * 65}px)`;
+      }
+      pending = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!pending) { pending = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+</script>
+
+<style>
+  /* ===== SECTION ===== */
+  .story-home {
+    position: relative;
+    padding-block: 6rem;
+    overflow: hidden;
+    background: var(--bg-card);
+  }
+  .story-texture {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 18px,
+      rgba(31,96,168,.025) 18px,
+      rgba(31,96,168,.025) 19px
+    );
+    pointer-events: none;
+  }
+
+  /* ===== VENEZUELA MAP ===== */
+  .vz-map-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .vz-map {
+    width: 52%;
+    max-width: 500px;
+    aspect-ratio: 600 / 527;
+    transform: translateX(2%);
+    background: radial-gradient(ellipse at 48% 52%,
+      rgba(31,96,168,0.32) 0%,
+      rgba(31,96,168,0.14) 45%,
+      transparent 72%
+    );
+    -webkit-mask-image: url('/assets/venezuela-map.svg');
+    mask-image: url('/assets/venezuela-map.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    filter: drop-shadow(0 0 14px rgba(31,96,168,0.5)) drop-shadow(0 0 44px rgba(31,96,168,0.18));
+  }
+  @media (max-width: 768px) {
+    .vz-map { width: 80%; transform: translateX(4%); opacity: 0.4; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vz-map-wrap { will-change: auto; }
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  /* ===== LEFT ===== */
+  .story-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .vz-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    width: fit-content;
+    background: var(--bg);
+  }
+  .vz-flag-img { height: 20px; width: auto; border-radius: 2px; display: block; }
+
+  .founding-year { display: flex; flex-direction: column; gap: 0.25rem; }
+  .year-num {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .year-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-top: -0.5rem;
+  }
+  .pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-left: 3px solid var(--color-gold);
+    padding-left: 1.25rem;
+  }
+
+  /* ===== RIGHT ===== */
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .story-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 1.75rem;
+  }
+  .story-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .story-body p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  .btn-story {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--color-accent);
+    border: 1.5px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: background 0.2s, color 0.2s;
+    width: fit-content;
+  }
+  .btn-story:hover { background: var(--color-accent); color: #fff; }
+</style>

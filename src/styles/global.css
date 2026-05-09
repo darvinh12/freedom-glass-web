@@ -9,8 +9,8 @@
    ============================================= */
 @theme {
   /* Typography */
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter Tight", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
 
   /* === BRAND COLORS (originales) === */
   --color-navy:         #002868;    /* Navy patriótico */

@@ -3,15 +3,598 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="About Us | Freedom Glass Remodeling Dallas TX"
-  description="Learn about Freedom Glass Remodeling LLC — our history, mission, and the team behind Dallas's premier glass installation company."
+  title="About Us | Freedom Glass Remodeling LLC"
+  description="Founded by Venezuelan entrepreneurs, Freedom Glass Remodeling has become one of DFW's most trusted glass companies — delivering precision craftsmanship since 2018."
   canonical="/about"
 >
-  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem;">
-    <div style="text-align: center;">
-      <h1 style="font-family: var(--font-display); font-size: 3rem; color: var(--text); margin-bottom: 1rem;">About Us</h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem;">Coming soon — this page is under construction.</p>
-      <a href="/" style="display: inline-flex; margin-top: 2rem; padding: 0.875rem 1.75rem; background: var(--color-accent); color: #0a0a0f; border-radius: 8px; text-decoration: none; font-weight: 600;">← Back to Home</a>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <p class="eyebrow">Our Company</p>
+      <h1 class="page-title">Built on Glass,<br/>Grounded in Family</h1>
+      <p class="page-subtitle">
+        A Venezuelan-owned business that turned immigrant grit and a passion for
+        precision into one of DFW's most trusted glass companies.
+      </p>
     </div>
-  </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="story-section">
+
+    <!-- Venezuela map — static decorative background -->
+    <div class="vz-map-about" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="story-grid">
+
+        <aside class="story-left blur-reveal">
+          <div class="vz-badge">
+            <img src="/assets/flag-venezuela.svg" alt="Venezuelan flag" class="vz-flag-img" />
+            <span>Venezuelan-Owned Business</span>
+          </div>
+          <div class="founding-year">
+            <span class="year-num gradient-text">2018</span>
+            <span class="year-label">Founded in Dallas, TX</span>
+          </div>
+          <blockquote class="pull-quote">
+            "We brought the precision of Venezuelan craftsmanship to Texas —
+            and we've never stopped raising the bar."
+          </blockquote>
+        </aside>
+
+        <div class="story-right blur-reveal">
+          <h2 class="story-heading">Our Story</h2>
+          <div class="story-body">
+            <p>
+              Freedom Glass Remodeling was born from a dream carried thousands of miles —
+              from the streets of Venezuela to the heart of Dallas. Our founders arrived
+              in Texas with a work ethic forged in a culture that values family,
+              craftsmanship, and relentless perseverance.
+            </p>
+            <p>
+              Starting as a two-person team in 2018, they took on every job with the
+              same dedication — whether it was an emergency glass repair or a full
+              commercial build-out. Word spread fast: this was a company that showed up
+              on time, communicated clearly, and delivered results that spoke for
+              themselves.
+            </p>
+            <p>
+              Today, Freedom Glass Remodeling serves hundreds of clients across the
+              Dallas–Fort Worth metroplex. We've grown — but our foundation hasn't
+              changed. Immigrant grit, family values, and a commitment to doing the
+              job right, every single time.
+            </p>
+          </div>
+
+          <!-- Journey timeline -->
+          <div class="journey-timeline" aria-label="Company journey">
+            <div class="journey-item">
+              <div class="journey-dot"></div>
+              <img src="/assets/flag-venezuela.svg" alt="Venezuelan flag" class="journey-flag-img" />
+              <span class="journey-label">Venezuela</span>
+            </div>
+            <div class="journey-line" aria-hidden="true"></div>
+            <div class="journey-item">
+              <div class="journey-dot journey-dot--accent"></div>
+              <span class="journey-year">2018</span>
+              <span class="journey-label">Dallas, TX</span>
+            </div>
+            <div class="journey-line" aria-hidden="true"></div>
+            <div class="journey-item">
+              <div class="journey-dot journey-dot--accent"></div>
+              <span class="journey-year">500+</span>
+              <span class="journey-label">Projects</span>
+            </div>
+            <div class="journey-line" aria-hidden="true"></div>
+            <div class="journey-item">
+              <div class="journey-dot journey-dot--gold"></div>
+              <span class="journey-year">4.9 ★</span>
+              <span class="journey-label">Google</span>
+            </div>
+          </div>
+
+          <div class="story-highlights">
+            <div class="highlight-item">
+              <span class="highlight-val">500+</span>
+              <span class="highlight-lbl">Projects completed</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-val">6+</span>
+              <span class="highlight-lbl">Years serving DFW</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-val">4.9 ★</span>
+              <span class="highlight-lbl">Google rating</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header blur-reveal">
+        <p class="eyebrow">What Drives Us</p>
+        <h2 class="section-title">Our Core Values</h2>
+        <p class="section-subtitle">
+          The principles we brought from Venezuela and apply to every project in Texas.
+        </p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card glass">
+          <span class="val-n">01</span>
+          <h3 class="val-title">Precision First</h3>
+          <p class="val-desc">Glass is unforgiving. Every measurement, every cut, every installation is executed with exactness — no shortcuts, no compromises.</p>
+        </div>
+        <div class="value-card glass">
+          <span class="val-n">02</span>
+          <h3 class="val-title">Family-Built</h3>
+          <p class="val-desc">We treat your home or business like our own. The care we bring to every project is the same care we would give our own family.</p>
+        </div>
+        <div class="value-card glass">
+          <span class="val-n">03</span>
+          <h3 class="val-title">Transparent Communication</h3>
+          <p class="val-desc">No surprise costs, no vague timelines. We give honest quotes, keep you updated, and deliver exactly what we promise.</p>
+        </div>
+        <div class="value-card glass">
+          <span class="val-n">04</span>
+          <h3 class="val-title">Craftsmanship Over Speed</h3>
+          <p class="val-desc">We work efficiently — but never at the expense of quality. A rushed job is a job done twice. We do it once, and we do it right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST CREDENTIALS -->
+  <section class="creds-section">
+    <div class="container">
+      <div class="creds-grid">
+        <div class="cred-card glass blur-reveal">
+          <div class="cred-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Licensed &amp; Insured</h3>
+          <p>Fully licensed in Texas and carrying comprehensive liability insurance — protecting you, your property, and our team on every job.</p>
+        </div>
+        <div class="cred-card glass blur-reveal">
+          <div class="cred-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Reliable Scheduling</h3>
+          <p>We respect your time. Most projects are quoted within 24 hours, and we stick to agreed installation dates with prompt, professional crews.</p>
+        </div>
+        <div class="cred-card glass blur-reveal">
+          <div class="cred-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Premium Materials</h3>
+          <p>We source only premium tempered, laminated, and specialty glass from trusted suppliers — because the results are only as good as the materials used.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="about-cta-section">
+    <div class="container">
+      <div class="about-cta glass blur-reveal">
+        <div class="about-cta-glow" aria-hidden="true"></div>
+        <p class="eyebrow">Start Your Project</p>
+        <h2 class="cta-title">Ready to Work with Us?</h2>
+        <p class="cta-sub">
+          Most projects are quoted within 24 hours.<br/>
+          Free estimates · No pressure · Licensed &amp; Insured.
+        </p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-primary">Get a Free Estimate</a>
+          <a href="/portfolio" class="btn-ghost">View Our Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    position: relative;
+    padding: 9rem 2rem 6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(31,96,168,.16) 0%, transparent 65%),
+      repeating-linear-gradient(-55deg, transparent, transparent 18px, rgba(31,96,168,.025) 18px, rgba(31,96,168,.025) 19px);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== STORY ===== */
+  .story-section { padding-block: 6rem; position: relative; overflow: hidden; }
+
+  .vz-map-about {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 46%;
+    max-width: 460px;
+    aspect-ratio: 600 / 527;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 48% 52%,
+      rgba(31,96,168,0.24) 0%,
+      rgba(31,96,168,0.10) 50%,
+      transparent 75%
+    );
+    -webkit-mask-image: url('/assets/venezuela-map.svg');
+    mask-image: url('/assets/venezuela-map.svg');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    filter: drop-shadow(0 0 12px rgba(31,96,168,0.45)) drop-shadow(0 0 38px rgba(31,96,168,0.14));
+  }
+  @media (max-width: 900px) {
+    .vz-map-about { width: 75%; right: 0; opacity: 0.3; top: 5%; transform: none; }
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .story-left {
+    position: sticky;
+    top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  @media (max-width: 900px) { .story-left { position: static; } }
+
+  .vz-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    width: fit-content;
+    background: var(--bg-card);
+  }
+  .vz-flag-img { height: 20px; width: auto; border-radius: 2px; display: block; }
+
+  .founding-year {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .year-num {
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 10vw, 7rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .year-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-top: -0.5rem;
+  }
+  .pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-left: 3px solid var(--color-gold);
+    padding-left: 1.25rem;
+  }
+
+  .story-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+  .story-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  .story-body p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  /* ===== JOURNEY TIMELINE ===== */
+  .journey-timeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+  }
+  .journey-timeline::-webkit-scrollbar { display: none; }
+  .journey-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+    min-width: 64px;
+  }
+  .journey-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--text-muted);
+    flex-shrink: 0;
+  }
+  .journey-dot--accent { background: var(--color-accent); border-color: var(--color-accent); }
+  .journey-dot--gold   { background: var(--color-gold);   border-color: var(--color-gold); }
+
+  .journey-flag-img { height: 18px; width: auto; border-radius: 2px; display: block; }
+
+  .journey-year {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .journey-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .journey-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-accent), var(--border));
+    min-width: 24px;
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+  }
+
+  .story-highlights {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .highlight-val {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .highlight-lbl {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== VALUES ===== */
+  .values-section {
+    background: var(--bg-card);
+    padding-block: 6rem;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-card {
+    padding: 2rem 2rem 2.25rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.3s ease;
+  }
+  .value-card:hover { transform: translateY(-4px); }
+  .val-n {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.12em;
+  }
+  .val-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .val-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== CREDENTIALS ===== */
+  .creds-section { padding-block: 6rem; }
+  .creds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .creds-grid { grid-template-columns: 1fr; } }
+  .cred-card {
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+  }
+  .cred-card:hover { transform: translateY(-4px); }
+  .cred-icon {
+    color: var(--color-accent);
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .cred-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .cred-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== ABOUT CTA ===== */
+  .about-cta-section { padding-block: 6rem; background: var(--bg-card); }
+  .about-cta {
+    border-radius: var(--radius-lg);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-cta-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(31,96,168,.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .cta-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(31,96,168,.35);
+  }
+  .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+</style>

@@ -1,17 +1,347 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const categories = [
+  { id: 'all',        label: 'All Projects' },
+  { id: 'showers',    label: 'Frameless Showers' },
+  { id: 'mirrors',    label: 'Mirrors' },
+  { id: 'commercial', label: 'Commercial' },
+  { id: 'specialty',  label: 'Specialty' },
+];
+
+const items = [
+  { src: '/assets/portfolio/frameless-90/corner-showers-1.webp',      alt: 'Frameless 90° corner shower',       cat: 'showers',    label: 'Frameless Shower' },
+  { src: '/assets/portfolio/frameless-90/IMG_7786.jpeg.webp',          alt: 'Custom glass shower enclosure',     cat: 'showers',    label: 'Frameless Shower' },
+  { src: '/assets/portfolio/frameless-90/corner-showers-3.webp',       alt: 'Corner shower glass door',          cat: 'showers',    label: 'Frameless Shower' },
+  { src: '/assets/portfolio/frameless-90/IMG_8014.jpeg.webp',          alt: 'Premium frameless shower door',     cat: 'showers',    label: 'Frameless Shower' },
+  { src: '/assets/portfolio/frameless-80/Imagen-de-WhatsApp-2023-10-24-a-las-14.05.21-scaled-1.webp', alt: '80° shower enclosure', cat: 'showers', label: 'Frameless Shower' },
+  { src: '/assets/portfolio/frameless-80/IMG_7899.jpeg.webp',          alt: 'Glass shower 80° angle',            cat: 'showers',    label: 'Frameless Shower' },
+  { src: '/assets/portfolio/angled/Angled-showers-1.jpeg.webp',        alt: 'Custom angled shower enclosure',    cat: 'showers',    label: 'Angled Shower' },
+  { src: '/assets/portfolio/angled/Custom-angled-showers-2.webp',      alt: 'Angled glass enclosure detail',     cat: 'showers',    label: 'Angled Shower' },
+  { src: '/assets/portfolio/frameless-doors/IMG_2729.jpeg-scaled.webp', alt: 'Frameless glass shower door',      cat: 'showers',    label: 'Frameless Door' },
+  { src: '/assets/portfolio/frameless-doors/IMG_5641-1-rotated.jpeg.webp', alt: 'Interior frameless glass door', cat: 'showers',    label: 'Frameless Door' },
+  { src: '/assets/portfolio/tub/IMG_1945.jpeg.webp',                   alt: 'Glass tub enclosure',               cat: 'showers',    label: 'Tub Enclosure' },
+  { src: '/assets/portfolio/tub/IMG_4793-1.jpeg.webp',                 alt: 'Custom tub glass panel',            cat: 'showers',    label: 'Tub Enclosure' },
+  { src: '/assets/portfolio/mirrors/custom-mirrors-3.webp',            alt: 'Custom mirror wall installation',   cat: 'mirrors',    label: 'Custom Mirror' },
+  { src: '/assets/portfolio/mirrors/custom-mirrors-4.webp',            alt: 'Decorative bathroom mirror',        cat: 'mirrors',    label: 'Custom Mirror' },
+  { src: '/assets/portfolio/mirrors/Imagen-de-WhatsApp-2023-10-24-a-las-14.05.36-1-scaled-1.webp', alt: 'Custom bathroom mirror', cat: 'mirrors', label: 'Custom Mirror' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-1.webp',       alt: 'Office glass partition wall',       cat: 'commercial', label: 'Commercial Glass' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-3.webp',       alt: 'Commercial glass wall office',      cat: 'commercial', label: 'Commercial Glass' },
+  { src: '/assets/portfolio/commercial/Commercial-Glass-6.webp',       alt: 'Commercial glass installation',     cat: 'commercial', label: 'Commercial Glass' },
+  { src: '/assets/portfolio/steam/Full-HEIGHT-Steam-showers-1-1-1.jpeg.webp', alt: 'Full height steam shower',  cat: 'specialty',  label: 'Steam Shower' },
+  { src: '/assets/portfolio/wine-rooms/Custom-wine-rooms-3-rotated.jpeg.webp', alt: 'Custom glass wine room',   cat: 'specialty',  label: 'Wine Room' },
+];
 ---
 
 <BaseLayout
-  title="Portfolio | Freedom Glass Remodeling Dallas TX"
-  description="Browse 170+ completed glass projects: frameless showers, custom mirrors, commercial partitions, and more across Dallas / Fort Worth."
+  title="Portfolio | Freedom Glass Remodeling LLC"
+  description="Browse 500+ completed glass projects — frameless showers, custom mirrors, commercial partitions, wine rooms, and more across Dallas–Fort Worth."
   canonical="/portfolio"
 >
-  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem;">
-    <div style="text-align: center;">
-      <h1 style="font-family: var(--font-display); font-size: 3rem; color: var(--text); margin-bottom: 1rem;">Portfolio</h1>
-      <p style="color: var(--text-muted); font-size: 1.1rem;">Coming soon — this page is under construction.</p>
-      <a href="/" style="display: inline-flex; margin-top: 2rem; padding: 0.875rem 1.75rem; background: var(--color-accent); color: #0a0a0f; border-radius: 8px; text-decoration: none; font-weight: 600;">← Back to Home</a>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <p class="eyebrow">Our Work</p>
+      <h1 class="page-title">500+ Projects.<br/>Zero Compromises.</h1>
+      <p class="page-subtitle">
+        Every project in our portfolio was measured twice, cut once, and installed
+        with the precision our clients deserve.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTER TABS -->
+  <div class="filter-bar" role="group" aria-label="Filter portfolio by category">
+    <div class="filter-bar-inner">
+      {categories.map(c => (
+        <button
+          class={`filter-btn ${c.id === 'all' ? 'filter-btn--active' : ''}`}
+          data-filter={c.id}
+          aria-pressed={c.id === 'all' ? 'true' : 'false'}
+        >
+          {c.label}
+        </button>
+      ))}
     </div>
   </div>
+
+  <!-- PORTFOLIO GRID -->
+  <section class="portfolio-section">
+    <div class="container">
+      <div class="portfolio-grid" id="portfolio-grid">
+        {items.map(item => (
+          <figure class="portfolio-item" data-cat={item.cat}>
+            <div class="portfolio-img-wrap">
+              <img
+                src={item.src}
+                alt={item.alt}
+                class="portfolio-img"
+                loading="lazy"
+                width="400"
+                height="300"
+              />
+              <div class="portfolio-overlay">
+                <span class="portfolio-label">{item.label}</span>
+              </div>
+            </div>
+          </figure>
+        ))}
+      </div>
+      <p class="no-results" id="no-results" hidden>No projects found in this category.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="portfolio-cta-section">
+    <div class="container">
+      <div class="portfolio-cta glass blur-reveal">
+        <div class="portfolio-cta-glow" aria-hidden="true"></div>
+        <p class="eyebrow">Your Project Next</p>
+        <h2 class="cta-title">Ready to Add Your Space<br/>to Our Portfolio?</h2>
+        <p class="cta-sub">Free estimates · Most projects quoted within 24 hours · All DFW</p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-primary">Request Free Quote</a>
+          <a href="/services" class="btn-ghost">View All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const portfolioItems = document.querySelectorAll<HTMLElement>('.portfolio-item');
+  const noResults = document.getElementById('no-results');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+      filterBtns.forEach(b => {
+        b.classList.remove('filter-btn--active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('filter-btn--active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      let visible = 0;
+      portfolioItems.forEach(item => {
+        const match = filter === 'all' || item.dataset.cat === filter;
+        (item as HTMLElement).style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (noResults) noResults.hidden = visible > 0;
+    });
+  });
+</script>
+
+<style>
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    position: relative;
+    padding: 9rem 2rem 6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(31,96,168,.16) 0%, transparent 65%),
+      repeating-linear-gradient(-55deg, transparent, transparent 18px, rgba(31,96,168,.025) 18px, rgba(31,96,168,.025) 19px);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== FILTER BAR ===== */
+  .filter-bar {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-bar-inner {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+  }
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .filter-btn:hover { color: var(--text); }
+  .filter-btn--active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* ===== PORTFOLIO GRID ===== */
+  .portfolio-section { padding-block: 4rem; }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-inline: 2rem;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.875rem;
+  }
+  @media (max-width: 1100px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 400px)  { .portfolio-grid { grid-template-columns: 1fr; } }
+
+  .portfolio-item {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .portfolio-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .portfolio-item:hover .portfolio-img { transform: scale(1.07); }
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,17,23,.82) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 3rem;
+    font-size: 1rem;
+  }
+
+  /* ===== PORTFOLIO CTA ===== */
+  .portfolio-cta-section { padding-block: 6rem; background: var(--bg-card); }
+  .portfolio-cta {
+    border-radius: var(--radius-lg);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-cta-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(31,96,168,.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    position: relative;
+    line-height: 1.15;
+  }
+  .cta-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(31,96,168,.35);
+  }
+  .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+</style>

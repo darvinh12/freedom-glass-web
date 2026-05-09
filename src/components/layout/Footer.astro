@@ -68,7 +68,10 @@ const services = [
 
     <div class="footer-bottom">
       <p>&copy; {new Date().getFullYear()} Freedom Glass Remodeling LLC. All rights reserved.</p>
-      <p>Serving Dallas, Carrollton, Plano, Irving, Frisco &amp; DFW</p>
+      <div class="footer-vz-badge">
+        <img src="/assets/flag-venezuela.svg" alt="Venezuelan flag" class="footer-vz-flag-img" />
+        <span>Venezuelan-Owned Business · Dallas, TX</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -166,9 +169,20 @@ const services = [
     padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
     color: var(--text-muted);
     font-size: 0.8rem;
   }
+
+  .footer-vz-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .footer-vz-flag-img { height: 16px; width: auto; border-radius: 2px; display: block; flex-shrink: 0; }
 </style>

@@ -98,12 +98,17 @@ const differentiators = [
 
   @media (max-width: 900px) {
     .diff-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .diff-intro { position: static; }
   }
 
   .diff-intro {
-    position: sticky;
-    top: 8rem;
+    /* sticky only on wide screens where the two-column layout is active */
+  }
+
+  @media (min-width: 901px) {
+    .diff-intro {
+      position: sticky;
+      top: 8rem;
+    }
   }
 
   .intro-rule {

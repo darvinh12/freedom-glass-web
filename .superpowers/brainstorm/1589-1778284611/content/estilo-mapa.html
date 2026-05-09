@@ -1,0 +1,100 @@
+<h2>¿Cómo debe verse el mapa de Venezuela?</h2>
+<p class="subtitle">Cada opción se muestra como aparecería en el fondo de la sección "Our Story" — fondo oscuro, texto encima</p>
+
+<div class="cards" style="grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+
+  <!-- OPCIÓN A: Contorno fino -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0D1117; padding: 0; height: 220px; position:relative; overflow:hidden; border-radius:8px 8px 0 0;">
+      <svg viewBox="0 0 500 380" width="100%" height="100%" style="position:absolute;inset:0;opacity:0.22;">
+        <path d="M 85,148 L 105,108 L 118,118 L 112,138 L 128,158 L 138,148 L 165,122 L 195,108 L 238,102 L 275,98 L 310,100 L 340,112 L 358,135 L 372,162 L 385,198 L 388,240 L 370,285 L 320,315 L 255,328 L 195,330 L 145,315 L 108,282 L 72,238 L 68,195 L 75,165 Z"
+              fill="none" stroke="#2A6DB5" stroke-width="2"/>
+      </svg>
+      <!-- texto de ejemplo encima -->
+      <div style="position:absolute;bottom:16px;left:16px;right:16px;">
+        <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Our Story</div>
+        <div style="font-size:14px;color:#F0F6FC;font-weight:600;line-height:1.4;">From Venezuela<br/>to Dallas, TX</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Contorno elegante</h3>
+      <p>Línea fina del borde de Venezuela. Sutil, arquitectónico. Se integra como elemento decorativo sin competir con el texto. Estilo premium.</p>
+    </div>
+  </div>
+
+  <!-- OPCIÓN B: Silueta con glow -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0D1117; padding: 0; height: 220px; position:relative; overflow:hidden; border-radius:8px 8px 0 0;">
+      <svg viewBox="0 0 500 380" width="100%" height="100%" style="position:absolute;inset:0;">
+        <defs>
+          <radialGradient id="vzGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1F60A8" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#1F60A8" stop-opacity="0.04"/>
+          </radialGradient>
+        </defs>
+        <path d="M 85,148 L 105,108 L 118,118 L 112,138 L 128,158 L 138,148 L 165,122 L 195,108 L 238,102 L 275,98 L 310,100 L 340,112 L 358,135 L 372,162 L 385,198 L 388,240 L 370,285 L 320,315 L 255,328 L 195,330 L 145,315 L 108,282 L 72,238 L 68,195 L 75,165 Z"
+              fill="url(#vzGlow)" stroke="#2A6DB5" stroke-width="1.5" stroke-opacity="0.5"/>
+      </svg>
+      <div style="position:absolute;bottom:16px;left:16px;right:16px;">
+        <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Our Story</div>
+        <div style="font-size:14px;color:#F0F6FC;font-weight:600;line-height:1.4;">From Venezuela<br/>to Dallas, TX</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Silueta con brillo</h3>
+      <p>Relleno semitransparente con glow azul. La silueta se percibe como presencia, no solo como línea. Más impacto visual, Venezuela se siente viva.</p>
+    </div>
+  </div>
+
+  <!-- OPCIÓN C: Puntos / constelación -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0D1117; padding: 0; height: 220px; position:relative; overflow:hidden; border-radius:8px 8px 0 0;">
+      <svg viewBox="0 0 500 380" width="100%" height="100%" style="position:absolute;inset:0;opacity:0.35;">
+        <!-- Puntos distribuidos en forma de Venezuela -->
+        <g fill="#94A9C9">
+          <!-- Borde norte -->
+          <circle cx="90" cy="148" r="2.5"/><circle cx="105" cy="108" r="2"/><circle cx="112" cy="130" r="2"/><circle cx="128" cy="158" r="2.5"/><circle cx="140" cy="148" r="2"/>
+          <circle cx="155" cy="133" r="2"/><circle cx="170" cy="122" r="2.5"/><circle cx="185" cy="115" r="2"/><circle cx="200" cy="108" r="2"/>
+          <circle cx="218" cy="104" r="2.5"/><circle cx="238" cy="102" r="2"/><circle cx="258" cy="100" r="2"/><circle cx="275" cy="98" r="2.5"/>
+          <circle cx="295" cy="99" r="2"/><circle cx="312" cy="100" r="2"/><circle cx="328" cy="106" r="2.5"/><circle cx="342" cy="113" r="2"/>
+          <!-- Este -->
+          <circle cx="358" cy="135" r="2.5"/><circle cx="370" cy="152" r="2"/><circle cx="380" cy="175" r="2"/><circle cx="385" cy="198" r="2.5"/>
+          <circle cx="387" cy="220" r="2"/><circle cx="386" cy="242" r="2"/><circle cx="378" cy="262" r="2.5"/><circle cx="368" cy="280" r="2"/>
+          <!-- Sur -->
+          <circle cx="350" cy="300" r="2"/><circle cx="325" cy="315" r="2.5"/><circle cx="300" cy="322" r="2"/><circle cx="275" cy="327" r="2"/>
+          <circle cx="248" cy="329" r="2.5"/><circle cx="220" cy="330" r="2"/><circle cx="195" cy="328" r="2"/>
+          <circle cx="168" cy="322" r="2.5"/><circle cx="145" cy="312" r="2"/><circle cx="125" cy="298" r="2"/>
+          <!-- Oeste -->
+          <circle cx="108" cy="280" r="2.5"/><circle cx="92" cy="260" r="2"/><circle cx="80" cy="240" r="2"/><circle cx="72" cy="218" r="2.5"/>
+          <circle cx="68" cy="196" r="2"/><circle cx="70" cy="175" r="2"/><circle cx="77" cy="160" r="2.5"/>
+          <!-- Interior (puntos interiores) -->
+          <circle cx="200" cy="200" r="1.5" fill-opacity="0.5"/><circle cx="250" cy="180" r="1.5" fill-opacity="0.5"/>
+          <circle cx="300" cy="220" r="1.5" fill-opacity="0.5"/><circle cx="180" cy="250" r="1.5" fill-opacity="0.5"/>
+          <circle cx="310" cy="260" r="1.5" fill-opacity="0.5"/><circle cx="240" cy="270" r="1.5" fill-opacity="0.5"/>
+        </g>
+        <!-- Líneas de constelación sutiles -->
+        <g stroke="#94A9C9" stroke-width="0.5" stroke-opacity="0.2">
+          <line x1="90" y1="148" x2="105" y2="108"/>
+          <line x1="105" y1="108" x2="128" y2="158"/>
+          <line x1="200" y1="200" x2="250" y2="180"/>
+          <line x1="250" y1="180" x2="300" y2="220"/>
+        </g>
+      </svg>
+      <div style="position:absolute;bottom:16px;left:16px;right:16px;">
+        <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Our Story</div>
+        <div style="font-size:14px;color:#F0F6FC;font-weight:600;line-height:1.4;">From Venezuela<br/>to Dallas, TX</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Constelación de puntos</h3>
+      <p>Venezuela formada por puntos conectados. Artístico, moderno, único. Evoca viaje, distancia, navegación. Menos obvio pero más memorable.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(31,96,168,0.07);border-left:3px solid #2A6DB5;border-radius:6px;">
+  <p style="font-size:0.84rem;color:#8b949e;margin:0;">
+    Los 3 estilos se verían en el fondo con efecto parallax — el mapa se desplaza ligeramente más lento que el scroll, creando profundidad. El texto de la historia iría superpuesto encima.
+  </p>
+</div>

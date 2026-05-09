@@ -82,6 +82,9 @@
     overflow: hidden;
     background: var(--bg-card);
   }
+
+  @media (max-width: 768px) { .story-home { padding-block: 4rem; } }
+  @media (max-width: 480px) { .story-home { padding-block: 2.5rem; } }
   .story-texture {
     position: absolute;
     inset: 0;
@@ -127,6 +130,11 @@
   }
   @media (max-width: 768px) {
     .vz-map { width: 80%; transform: translateX(4%); opacity: 0.4; }
+  }
+  @media (max-width: 480px) {
+    .vz-map { width: 90%; opacity: 0.2; }
+    .story-left { gap: 1.5rem; }
+    .container { padding-inline: 1rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .vz-map-wrap { will-change: auto; }

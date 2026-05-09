@@ -59,6 +59,9 @@ const serviceIcons: Record<string, string> = {
 <style>
   .services-section { padding-block: 6rem; }
 
+  @media (max-width: 768px) { .services-section { padding-block: 4rem; } }
+  @media (max-width: 480px) { .services-section { padding-block: 2.5rem; } }
+
   .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -149,7 +152,7 @@ const serviceIcons: Record<string, string> = {
 
   .card-image-wrap {
     position: relative;
-    height: 220px;
+    height: clamp(160px, 35vw, 220px);
     overflow: hidden;
   }
 

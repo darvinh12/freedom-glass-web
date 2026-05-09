@@ -66,6 +66,9 @@ import { reviews } from '../../data/reviews';
     padding: 6rem 2rem;
   }
 
+  @media (max-width: 768px) { .container { padding: 4rem 1.5rem; } }
+  @media (max-width: 480px) { .container { padding: 2.5rem 1rem; } }
+
   .section-header {
     text-align: center;
     margin-bottom: 3.5rem;
@@ -96,6 +99,15 @@ import { reviews } from '../../data/reviews';
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: rgba(42, 109, 181, 0.05);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .rating-summary { gap: 0.75rem; padding: 0.75rem 1.25rem; }
+    .rating-score { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; width: 100%; justify-content: center; }
+    .rating-right { align-items: center; }
+    .review-card { padding: 1.25rem; }
   }
 
   .rating-score {

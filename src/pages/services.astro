@@ -101,6 +101,8 @@ import { services } from '../data/services';
     text-align: center;
     overflow: hidden;
   }
+  @media (max-width: 768px) { .page-hero { padding: 7rem 1.5rem 4rem; } }
+  @media (max-width: 480px) { .page-hero { padding: 5.5rem 1rem 3rem; } }
   .page-hero-bg {
     position: absolute;
     inset: 0;
@@ -182,6 +184,8 @@ import { services } from '../data/services';
     padding-block: 6rem;
     border-bottom: 1px solid var(--border);
   }
+  @media (max-width: 768px) { .service-section { padding-block: 4rem; } }
+  @media (max-width: 480px) { .service-section { padding-block: 2.5rem; } .container { padding-inline: 1rem; } }
   .service-section--alt { background: var(--bg-card); }
 
   .service-inner {
@@ -301,6 +305,7 @@ import { services } from '../data/services';
 
   /* ===== BOTTOM CTA ===== */
   .services-cta-section { padding-block: 6rem; }
+  @media (max-width: 768px) { .services-cta-section { padding-block: 3rem; } }
   .services-cta {
     border-radius: var(--radius-lg);
     padding: 5rem 3rem;
@@ -352,4 +357,14 @@ import { services } from '../data/services';
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  @media (max-width: 768px) {
+    .services-cta { padding: 3rem 1.5rem; }
+    .service-ctas { flex-direction: column; }
+    .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  }
+  @media (max-width: 480px) {
+    .services-cta { padding: 2rem 1rem; }
+    .snav-pill { padding: 0.75rem 1rem; font-size: 0.75rem; }
+  }
 </style>

@@ -274,4 +274,12 @@ const currentPath = Astro.url.pathname;
     .mobile-toggle { display: flex; }
     .btn-primary:not(.mobile-cta) { display: none; }
   }
+
+  @media (max-width: 480px) {
+    .navbar-inner { padding: 0.75rem 1rem; }
+    .navbar-logo-img { height: 40px; }
+    .navbar.scrolled .navbar-logo-img { height: 34px; }
+    .brand-main { font-size: 0.95rem; }
+    .brand-sub { display: none; }
+  }
 </style>

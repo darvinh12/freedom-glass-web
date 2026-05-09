@@ -224,6 +224,8 @@ const areas = [
     text-align: center;
     overflow: hidden;
   }
+  @media (max-width: 768px) { .page-hero { padding: 7rem 1.5rem 4rem; } }
+  @media (max-width: 480px) { .page-hero { padding: 5.5rem 1rem 3rem; } }
   .page-hero-bg {
     position: absolute;
     inset: 0;
@@ -280,6 +282,8 @@ const areas = [
 
   /* ===== CONTACT SECTION ===== */
   .contact-section { padding-block: 5rem 7rem; }
+  @media (max-width: 768px) { .contact-section { padding-block: 3rem 4rem; } .container { padding-inline: 1.5rem; } }
+  @media (max-width: 480px) { .contact-section { padding-block: 2rem 3rem; } .container { padding-inline: 1rem; } .info-card { padding: 1.25rem; } .btn-submit { width: 100%; } }
   .container {
     max-width: 1280px;
     margin: 0 auto;

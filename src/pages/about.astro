@@ -209,6 +209,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-align: center;
     overflow: hidden;
   }
+  @media (max-width: 768px) { .page-hero { padding: 7rem 1.5rem 4rem; } }
+  @media (max-width: 480px) { .page-hero { padding: 5.5rem 1rem 3rem; } }
   .page-hero-bg {
     position: absolute;
     inset: 0;
@@ -597,4 +599,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  @media (max-width: 768px) {
+    .values-section { padding-block: 4rem; }
+    .creds-section { padding-block: 4rem; }
+    .about-cta-section { padding-block: 4rem; }
+    .about-cta { padding: 3rem 1.5rem; }
+    .container { padding-inline: 1.5rem; }
+    .creds-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .values-section { padding-block: 2.5rem; }
+    .creds-section { padding-block: 2.5rem; }
+    .about-cta-section { padding-block: 2.5rem; }
+    .about-cta { padding: 2rem 1rem; }
+    .container { padding-inline: 1rem; }
+    .creds-grid { grid-template-columns: 1fr; }
+    .value-card { padding: 1.25rem; }
+    .cred-card { padding: 1.5rem 1.25rem; }
+    .story-highlights { gap: 1.5rem; }
+    .vz-map-about { display: none; }
+  }
 </style>

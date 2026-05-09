@@ -185,6 +185,8 @@ const faqGroups = [
     text-align: center;
     overflow: hidden;
   }
+  @media (max-width: 768px) { .page-hero { padding: 7rem 1.5rem 4rem; } }
+  @media (max-width: 480px) { .page-hero { padding: 5.5rem 1rem 3rem; } }
   .page-hero-bg {
     position: absolute;
     inset: 0;
@@ -408,4 +410,18 @@ const faqGroups = [
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  @media (max-width: 768px) {
+    .faq-section { padding-block: 3rem 5rem; }
+    .faq-cta-section { padding-block: 2rem 4rem; }
+    .faq-cta { padding: 3rem 1.5rem; }
+    .container { padding-inline: 1.5rem; }
+    .faq-answer { padding-right: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .faq-section { padding-block: 2rem 3rem; }
+    .faq-cta { padding: 2rem 1rem; }
+    .container { padding-inline: 1rem; }
+    .faq-groups { gap: 2.5rem; }
+  }
 </style>

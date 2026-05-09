@@ -1,0 +1,81 @@
+<h2>Mi recomendación: B + A combinados</h2>
+<p class="subtitle">Silueta con glow azul (B) + contorno fino encima (A) — así quedaría en la sección "Our Story"</p>
+
+<div class="mockup">
+  <div class="mockup-header">Vista previa — Sección "Our Story" en el home</div>
+  <div class="mockup-body" style="background:#0D1117; min-height: 360px; position:relative; overflow:hidden; padding:0; border-radius:0 0 8px 8px;">
+
+    <!-- MAPA VENEZUELA — B+A combinado (parallax simulado con scale) -->
+    <svg viewBox="0 0 500 380" style="position:absolute;top:-10%;left:-5%;width:110%;height:120%;opacity:1;pointer-events:none;">
+      <defs>
+        <radialGradient id="vzGlow2" cx="50%" cy="55%" r="48%">
+          <stop offset="0%"   stop-color="#1F60A8" stop-opacity="0.22"/>
+          <stop offset="60%"  stop-color="#1F60A8" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#1F60A8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Relleno con glow (B) -->
+      <path d="M 85,148 L 105,108 L 118,118 L 112,138 L 128,158 L 138,148 L 165,122 L 195,108 L 238,102 L 275,98 L 310,100 L 340,112 L 358,135 L 372,162 L 385,198 L 388,240 L 370,285 L 320,315 L 255,328 L 195,330 L 145,315 L 108,282 L 72,238 L 68,195 L 75,165 Z"
+            fill="url(#vzGlow2)"/>
+      <!-- Contorno fino encima (A) -->
+      <path d="M 85,148 L 105,108 L 118,118 L 112,138 L 128,158 L 138,148 L 165,122 L 195,108 L 238,102 L 275,98 L 310,100 L 340,112 L 358,135 L 372,162 L 385,198 L 388,240 L 370,285 L 320,315 L 255,328 L 195,330 L 145,315 L 108,282 L 72,238 L 68,195 L 75,165 Z"
+            fill="none" stroke="#2A6DB5" stroke-width="1.5" stroke-opacity="0.45"/>
+    </svg>
+
+    <!-- Línea diagonal de fondo (igual que el resto del sitio) -->
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 18px,rgba(31,96,168,0.025) 18px,rgba(31,96,168,0.025) 19px);pointer-events:none;"></div>
+
+    <!-- Contenido de la sección -->
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:3rem;padding:3rem 2.5rem;align-items:center;">
+
+      <!-- Izquierda: dato visual -->
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.45rem 0.9rem;border:1px solid rgba(31,96,168,0.3);border-radius:9999px;margin-bottom:1.5rem;">
+          <div style="display:flex;height:12px;border-radius:2px;overflow:hidden;">
+            <span style="display:block;width:6px;height:100%;background:#CF9B09;"></span>
+            <span style="display:block;width:6px;height:100%;background:#003893;"></span>
+            <span style="display:block;width:6px;height:100%;background:#CF0A2C;"></span>
+          </div>
+          <span style="font-size:0.72rem;font-weight:600;color:#8b949e;letter-spacing:0.1em;">Venezuelan-Owned Business</span>
+        </div>
+
+        <div style="font-family:Georgia,serif;font-size:3.5rem;font-weight:700;color:#F0F6FC;line-height:1;margin-bottom:0.25rem;opacity:0.1;">2018</div>
+        <div style="font-size:0.8rem;color:#8b949e;margin-top:-0.75rem;margin-bottom:1.75rem;letter-spacing:0.04em;">Founded in Dallas, TX</div>
+
+        <blockquote style="font-family:Georgia,serif;font-style:italic;font-size:0.95rem;color:#8b949e;line-height:1.7;border-left:3px solid #C9A84C;padding-left:1rem;margin:0;">
+          "We brought the precision of Venezuelan craftsmanship to Texas — and we've never stopped raising the bar."
+        </blockquote>
+      </div>
+
+      <!-- Derecha: narrativa -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#C9A84C;margin-bottom:0.75rem;">Our Story</div>
+        <h2 style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;color:#F0F6FC;line-height:1.2;margin-bottom:1rem;">From Caracas<br/>to Dallas — by way of a dream.</h2>
+        <p style="font-size:0.85rem;color:#8b949e;line-height:1.75;margin-bottom:1rem;">
+          Freedom Glass was born from a dream carried thousands of miles. Our founders arrived in Texas with a work ethic forged in Venezuela — a culture that values family, craftsmanship, and relentless perseverance.
+        </p>
+        <p style="font-size:0.85rem;color:#8b949e;line-height:1.75;">
+          Starting as a two-person team, word spread fast: this was a company that showed up on time, communicated clearly, and delivered results that spoke for themselves.
+        </p>
+        <a href="#" style="display:inline-flex;margin-top:1.25rem;padding:0.65rem 1.25rem;background:#1F60A8;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:700;">Read the full story →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:1.5rem;">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+    <div style="padding:1rem;background:rgba(31,96,168,0.07);border-radius:8px;border:1px solid rgba(31,96,168,0.15);">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Performance</div>
+      <p style="font-size:0.8rem;color:#8b949e;margin:0;line-height:1.6;">SVG puro — sin imágenes externas, sin filtros GPU. El parallax usa <code style="font-size:0.75rem;color:#2A6DB5;">translateY</code> vía rAF, igual que el hero actual.</p>
+    </div>
+    <div style="padding:1rem;background:rgba(31,96,168,0.07);border-radius:8px;border:1px solid rgba(31,96,168,0.15);">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Integración</div>
+      <p style="font-size:0.8rem;color:#8b949e;margin:0;line-height:1.6;">El glow azul usa exactamente <code style="font-size:0.75rem;color:#2A6DB5;">var(--color-accent)</code> — se retematiza automáticamente si cambias el color.</p>
+    </div>
+    <div style="padding:1rem;background:rgba(31,96,168,0.07);border-radius:8px;border:1px solid rgba(31,96,168,0.15);">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Responsivo</div>
+      <p style="font-size:0.8rem;color:#8b949e;margin:0;line-height:1.6;">En mobile el mapa pasa al fondo de la sección en vez del lado — el layout se hace de una columna como el resto del sitio.</p>
+    </div>
+  </div>
+</div>

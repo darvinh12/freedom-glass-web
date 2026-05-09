@@ -406,6 +406,20 @@ const pageDesc = `${cat.description} View our ${cat.items.length} completed proj
     .lb-content { max-width: calc(100vw - 2rem); }
     .lb-prev { left: 0.5rem; }
     .lb-next { right: 0.5rem; }
+    .cta-box { padding: 2.5rem 1.5rem; }
+    .container { padding-inline: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .lb-close { top: 0.5rem; right: 0.5rem; width: 36px; height: 36px; }
+    .lb-prev, .lb-next { width: 40px; height: 40px; }
+    .lb-prev svg, .lb-next svg { width: 18px; height: 18px; }
+    .lb-content { max-width: 100vw; }
+    .breadcrumb { padding: 5rem 1rem 0; }
+    .page-hero { padding: 1rem 1rem 2.5rem; }
+    .cta-box { padding: 2rem 1rem; }
+    .container { padding-inline: 1rem; }
+    .gallery-section { padding-block: 0 3rem; }
+    .cta-section { padding-block: 3rem; }
   }
 
   /* ===== CTA ===== */

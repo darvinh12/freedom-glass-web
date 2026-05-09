@@ -335,6 +335,12 @@ export default function HeroSection() {
           .hero-content{padding:7rem 1.5rem 6rem;}
           .hero-dots{bottom:2.5rem;}
         }
+        @media(max-width:480px){
+          .hero-content{padding:5.5rem 1rem 4rem;}
+          .hero-dots{bottom:1.5rem;}
+          .hero-trust{gap:0.625rem;font-size:0.72rem;}
+          .btn-hero-primary,.btn-hero-secondary{padding:0.75rem 1.25rem;font-size:0.85rem;}
+        }
       `}</style>
     </section>
   );

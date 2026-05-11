@@ -37,7 +37,7 @@ const differentiators = [
   <div class="container">
     <div class="diff-layout">
 
-      <div class="diff-intro">
+      <div class="diff-intro reveal-left">
         <div class="intro-rule"></div>
         <p class="eyebrow">Why Choose Us</p>
         <h2 id="diff-title" class="section-title">
@@ -50,7 +50,7 @@ const differentiators = [
         <a href="/contact" class="btn-primary">Get Your Free Quote</a>
       </div>
 
-      <div class="diff-list">
+      <div class="diff-list stagger-grid">
         {differentiators.map(({ n, title, desc }, i) => (
           <article class="diff-item" style={`--i:${i}`}>
             <span class="diff-n" aria-hidden="true">{n}</span>
@@ -66,19 +66,6 @@ const differentiators = [
   </div>
 </section>
 
-<script>
-  const items = document.querySelectorAll<HTMLElement>('.diff-item');
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    }),
-    { threshold: 0.12 }
-  );
-  items.forEach(el => io.observe(el));
-</script>
 
 <style>
   .diff-section { padding-block: 6rem; }

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import GlobalEffects from '../components/effects/GlobalEffects';
@@ -131,6 +132,8 @@ const allSchemas = [
 
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_TOKEN"}' is:inline></script>
+
+  <ViewTransitions />
 </head>
 <body>
   <!-- Global visual effects: Lenis smooth scroll + custom cursor + scroll progress -->

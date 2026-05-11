@@ -30,7 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="story-grid">
 
-        <aside class="story-left blur-reveal">
+        <aside class="story-left reveal-left">
           <div class="vz-badge">
             <img src="/assets/flag-venezuela.svg" alt="Venezuelan flag" class="vz-flag-img" />
             <span>Venezuelan-Owned Business</span>
@@ -45,7 +45,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </blockquote>
         </aside>
 
-        <div class="story-right blur-reveal">
+        <div class="story-right reveal-right">
           <h2 class="story-heading">Our Story</h2>
           <div class="story-body">
             <p>
@@ -120,7 +120,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="mvv-section">
     <div class="container">
 
-      <div class="mvv-header blur-reveal">
+      <div class="mvv-header reveal-left">
         <p class="eyebrow">Our Foundation</p>
         <h2 class="section-title">Mission, Vision &amp; Objectives</h2>
         <p class="section-subtitle">
@@ -131,7 +131,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- Mission + Vision -->
       <div class="mv-grid">
-        <div class="mv-card glass blur-reveal">
+        <div class="mv-card glass reveal-scale">
           <div class="mv-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
@@ -145,7 +145,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
 
-        <div class="mv-card glass blur-reveal">
+        <div class="mv-card glass reveal-scale">
           <div class="mv-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
           </div>
@@ -161,12 +161,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Objectives -->
-      <div class="obj-section blur-reveal">
+      <div class="obj-section reveal-scale">
         <div class="obj-header">
           <p class="eyebrow">Concrete Goals</p>
           <h3 class="obj-title">Our Objectives</h3>
         </div>
-        <div class="obj-grid">
+        <div class="obj-grid stagger-grid">
           <div class="obj-item">
             <span class="obj-num">01</span>
             <div>
@@ -204,14 +204,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- VALUES -->
   <section class="values-section">
     <div class="container">
-      <div class="section-header blur-reveal">
+      <div class="section-header reveal-left">
         <p class="eyebrow">What Drives Us</p>
         <h2 class="section-title">Our Core Values</h2>
         <p class="section-subtitle">
           The principles we carried from Venezuela and apply to every project in Texas — and what separates us from every corporate franchise in the market.
         </p>
       </div>
-      <div class="values-grid">
+      <div class="values-grid stagger-grid">
         <div class="value-card glass">
           <span class="val-n">01</span>
           <h3 class="val-title">Craft, Not Commodity</h3>
@@ -239,22 +239,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- TRUST CREDENTIALS -->
   <section class="creds-section">
     <div class="container">
-      <div class="creds-grid">
-        <div class="cred-card glass blur-reveal">
+      <div class="creds-grid stagger-grid">
+        <div class="cred-card glass reveal-scale">
           <div class="cred-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3>Licensed &amp; Insured</h3>
           <p>Fully licensed in Texas and carrying comprehensive liability insurance — protecting you, your property, and our team on every job.</p>
         </div>
-        <div class="cred-card glass blur-reveal">
+        <div class="cred-card glass reveal-scale">
           <div class="cred-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <h3>Reliable Scheduling</h3>
           <p>We respect your time. Most projects are quoted within 24 hours, and we stick to agreed installation dates with prompt, professional crews.</p>
         </div>
-        <div class="cred-card glass blur-reveal">
+        <div class="cred-card glass reveal-scale">
           <div class="cred-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
@@ -268,7 +268,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- FINAL CTA -->
   <section class="about-cta-section">
     <div class="container">
-      <div class="about-cta glass blur-reveal">
+      <div class="about-cta glass reveal-scale">
         <div class="about-cta-glow" aria-hidden="true"></div>
         <p class="eyebrow">Start Your Project</p>
         <h2 class="cta-title">Ready to Work with Us?</h2>

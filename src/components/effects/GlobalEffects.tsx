@@ -120,16 +120,36 @@ export default function GlobalEffects() {
     return () => { lenis.destroy(); cancelAnimationFrame(rafId); };
   }, []);
 
-  // Blur-reveal: scroll-triggered entrance for any .blur-reveal element
+  // Reveal observer — blur-reveal + all directional variants
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>('.blur-reveal');
+    const els = document.querySelectorAll<HTMLElement>(
+      '.blur-reveal, .reveal, .reveal-left, .reveal-right, .reveal-scale'
+    );
     if (!els.length) return;
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  // Stagger observer — cascades .visible onto grid children with 80ms delay
+  useEffect(() => {
+    const grids = document.querySelectorAll<HTMLElement>('.stagger-grid');
+    if (!grids.length) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const children = [...e.target.children] as HTMLElement[];
+        children.forEach((child, i) => {
+          setTimeout(() => child.classList.add('visible'), Math.min(i, 7) * 80);
+        });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.08 });
+    grids.forEach(g => io.observe(g));
     return () => io.disconnect();
   }, []);
 

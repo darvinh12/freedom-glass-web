@@ -168,3 +168,61 @@ html.light .glass {
 @media (prefers-reduced-motion: reduce) {
   .blur-reveal { opacity: 1; filter: none; transform: none; transition: none; }
 }
+
+/* === View Transitions — fade entre páginas === */
+::view-transition-old(root) {
+  animation: 220ms ease both vt-fade-out;
+}
+::view-transition-new(root) {
+  animation: 280ms ease both vt-fade-in;
+}
+@keyframes vt-fade-out {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
+/* === Reveal variants — entradas direccionales === */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal       { opacity: 0; transform: translateY(20px); }
+.reveal-left  { opacity: 0; transform: translateX(-28px); }
+.reveal-right { opacity: 0; transform: translateX(28px); }
+.reveal-scale { opacity: 0; transform: scale(0.96); }
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
+/* === Stagger grid — hijos aparecen en cascada === */
+.stagger-grid > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stagger-grid > *.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stagger-grid > * { opacity: 1; transform: none; transition: none; }
+}

@@ -46,7 +46,7 @@ const pageDesc = `${cat.description} View our ${cat.items.length} completed proj
   <!-- PHOTO GRID -->
   <section class="gallery-section">
     <div class="container">
-      <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-grid stagger-grid" id="gallery-grid">
         {cat.items.map((img, i) => (
           <button
             class="gallery-item"

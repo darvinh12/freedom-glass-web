@@ -25,7 +25,7 @@ import { PORTFOLIO } from '../../data/portfolio';
   <!-- CATEGORY GRID -->
   <section class="cat-section">
     <div class="container">
-      <div class="cat-grid">
+      <div class="cat-grid stagger-grid">
         {PORTFOLIO.map(cat => (
           <a href={`/portfolio/${cat.id}`} class="cat-card" aria-label={`View ${cat.label} gallery`}>
             <div class="cat-thumb">

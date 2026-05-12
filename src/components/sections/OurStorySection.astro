@@ -114,8 +114,8 @@
     aspect-ratio: 600 / 527;
     transform: translateX(2%);
     background: radial-gradient(ellipse at 48% 52%,
-      rgba(31,96,168,0.32) 0%,
-      rgba(31,96,168,0.14) 45%,
+      rgba(31,96,168,0.45) 0%,
+      rgba(31,96,168,0.25) 45%,
       transparent 72%
     );
     -webkit-mask-image: url('/assets/venezuela-map.svg');
@@ -126,7 +126,10 @@
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-position: center;
-    filter: drop-shadow(0 0 14px rgba(31,96,168,0.5)) drop-shadow(0 0 44px rgba(31,96,168,0.18));
+    filter:
+      drop-shadow(0 0 8px rgba(31,96,168,0.90))
+      drop-shadow(0 0 20px rgba(31,96,168,0.60))
+      drop-shadow(0 0 45px rgba(31,96,168,0.25));
   }
   @media (max-width: 768px) {
     .vz-map { width: 80%; transform: translateX(4%); opacity: 0.4; }

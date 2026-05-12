@@ -64,6 +64,7 @@ export default function PortfolioSlider() {
         .portfolio-section {
           padding-block: 5rem;
           overflow: hidden;
+          background: var(--bg-elevated);
         }
         .portfolio-header {
           text-align: center;
@@ -79,6 +80,7 @@ export default function PortfolioSlider() {
           color: var(--color-gold);
           margin-bottom: 0.75rem;
         }
+        html.light .eyebrow { color: var(--color-accent); }
         .section-title {
           font-family: var(--font-display);
           font-size: clamp(1.8rem, 3.5vw, 2.75rem);
@@ -170,6 +172,8 @@ export default function PortfolioSlider() {
           transition: border-color 0.2s, color 0.2s;
         }
         .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+        html.light .btn-ghost { border-color: rgba(31,96,168,0.4); color: var(--text); }
+        html.light .btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
         @media (max-width: 640px) {
           .marquee-item { height: clamp(160px, 40vw, 240px); }

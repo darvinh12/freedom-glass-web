@@ -57,9 +57,9 @@ function CustomCursor() {
       <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <style>{`
-        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 0 1.5px rgba(0,0,0,0.5); }
-        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:2px solid #fff;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform;transition:width .2s,height .2s,opacity .2s,border-color .2s;opacity:.75;box-shadow:0 0 0 1px rgba(0,0,0,0.3); }
-        .cursor-ring.hover { width:56px;height:56px;opacity:1;border-color:#C9A84C;box-shadow:0 0 0 1px rgba(0,0,0,0.4); }
+        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:#0a0a0a;border-radius:50%;pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 8px 3px rgba(255,255,255,0.55),0 0 2px 1px rgba(255,255,255,0.9); }
+        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid #0a0a0a;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform;transition:width .2s,height .2s,opacity .2s,border-color .2s,box-shadow .2s;opacity:.8;box-shadow:0 0 10px 2px rgba(255,255,255,0.35),0 0 1px 1px rgba(255,255,255,0.6); }
+        .cursor-ring.hover { width:56px;height:56px;opacity:1;border-color:#0a0a0a;box-shadow:0 0 16px 4px rgba(255,255,255,0.5),0 0 2px 1px rgba(255,255,255,0.8); }
       `}</style>
     </>
   );

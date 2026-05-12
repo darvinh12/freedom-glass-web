@@ -25,14 +25,24 @@ function ScrollProgress() {
 function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const pos = useRef({ x: -100, y: -100 });
-  const ringPos = useRef({ x: -100, y: -100 });
+  const pos = useRef({ x: -200, y: -200 });
+  const ringPos = useRef({ x: -200, y: -200 });
   const raf = useRef<number>(0);
+  const visible = useRef(false);
 
   useEffect(() => {
     if (!window.matchMedia('(pointer: fine)').matches) return;
-    const onMove = (e: MouseEvent) => { pos.current = { x: e.clientX, y: e.clientY }; };
+
+    const onMove = (e: MouseEvent) => {
+      pos.current = { x: e.clientX, y: e.clientY };
+      if (!visible.current) {
+        visible.current = true;
+        dotRef.current?.classList.add('cursor-visible');
+        ringRef.current?.classList.add('cursor-visible');
+      }
+    };
     window.addEventListener('mousemove', onMove);
+
     const animate = () => {
       if (dotRef.current)
         dotRef.current.style.transform = `translate(${pos.current.x - 4}px, ${pos.current.y - 4}px)`;
@@ -43,6 +53,7 @@ function CustomCursor() {
       raf.current = requestAnimationFrame(animate);
     };
     raf.current = requestAnimationFrame(animate);
+
     const onEnter = () => ringRef.current?.classList.add('hover');
     const onLeave = () => ringRef.current?.classList.remove('hover');
     document.querySelectorAll('a, button, [data-cursor-hover]').forEach(el => {
@@ -57,9 +68,23 @@ function CustomCursor() {
       <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <style>{`
-        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:#0a0a0a;border-radius:50%;pointer-events:none;z-index:9999;will-change:transform;box-shadow:0 0 8px 3px rgba(255,255,255,0.55),0 0 2px 1px rgba(255,255,255,0.9); }
-        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid #0a0a0a;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform;transition:width .2s,height .2s,opacity .2s,border-color .2s,box-shadow .2s;opacity:.8;box-shadow:0 0 10px 2px rgba(255,255,255,0.35),0 0 1px 1px rgba(255,255,255,0.6); }
-        .cursor-ring.hover { width:56px;height:56px;opacity:1;border-color:#0a0a0a;box-shadow:0 0 16px 4px rgba(255,255,255,0.5),0 0 2px 1px rgba(255,255,255,0.8); }
+        .cursor-dot {
+          position:fixed;top:0;left:0;width:8px;height:8px;
+          background:#111;border-radius:50%;pointer-events:none;z-index:9999;
+          will-change:transform;opacity:0;transition:opacity .3s;
+          box-shadow:0 0 6px 2px rgba(255,255,255,0.6),0 0 0 1.5px rgba(255,255,255,0.4);
+        }
+        .cursor-ring {
+          position:fixed;top:0;left:0;width:40px;height:40px;
+          border:1.5px solid #111;border-radius:50%;pointer-events:none;z-index:9998;
+          will-change:transform;opacity:0;transition:width .2s,height .2s,opacity .3s,box-shadow .2s;
+          box-shadow:0 0 8px 1px rgba(255,255,255,0.4),0 0 0 1px rgba(255,255,255,0.25);
+        }
+        .cursor-dot.cursor-visible { opacity:1; }
+        .cursor-ring.cursor-visible { opacity:.75; }
+        .cursor-ring.hover { width:56px;height:56px;opacity:1;
+          box-shadow:0 0 14px 3px rgba(255,255,255,0.55),0 0 0 1px rgba(255,255,255,0.35);
+        }
       `}</style>
     </>
   );

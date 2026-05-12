@@ -120,7 +120,7 @@ export default function HeroSection() {
           <span>✓ Free Estimates</span>
           <span>✓ Licensed &amp; Insured</span>
           <span>✓ Serving All DFW</span>
-          <span>✓ 4.9★ on Google</span>
+          <span>✓ Same-Week Installations</span>
         </motion.div>
       </motion.div>
 

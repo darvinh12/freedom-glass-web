@@ -4,6 +4,7 @@ import { ViewTransitions } from 'astro:transitions';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import GlobalEffects from '../components/effects/GlobalEffects';
+import WhatsAppButton from '../components/ui/WhatsAppButton.astro';
 import type { Props as SEOProps } from '../types/seo';
 
 interface Props extends SEOProps {
@@ -146,5 +147,6 @@ const allSchemas = [
   </main>
 
   <Footer />
+  <WhatsAppButton />
 </body>
 </html>

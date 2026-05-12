@@ -345,8 +345,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     aspect-ratio: 600 / 527;
     pointer-events: none;
     background: radial-gradient(ellipse at 48% 52%,
-      rgba(31,96,168,0.24) 0%,
-      rgba(31,96,168,0.10) 50%,
+      rgba(31,96,168,0.45) 0%,
+      rgba(31,96,168,0.25) 50%,
       transparent 75%
     );
     -webkit-mask-image: url('/assets/venezuela-map.svg');
@@ -357,7 +357,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-position: center;
-    filter: drop-shadow(0 0 12px rgba(31,96,168,0.45)) drop-shadow(0 0 38px rgba(31,96,168,0.14));
+    filter:
+      drop-shadow(0 0 8px rgba(31,96,168,0.90))
+      drop-shadow(0 0 20px rgba(31,96,168,0.60))
+      drop-shadow(0 0 45px rgba(31,96,168,0.25));
   }
   @media (max-width: 900px) {
     .vz-map-about { width: 75%; right: 0; opacity: 0.3; top: 5%; transform: none; }

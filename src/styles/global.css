@@ -34,12 +34,12 @@
   --color-border:     rgba(31, 96, 168, 0.2);
 
   /* Light mode */
-  --color-surface-0-light: #ffffff;
-  --color-surface-1-light: #f6f8fa;
-  --color-surface-2-light: #eaeef2;
-  --color-text-light:      #1f2328;
-  --color-text-muted-light: #656d76;
-  --color-border-light:    rgba(31, 96, 168, 0.15);
+  --color-surface-0-light: #e8eef8;    /* Azul-hielo — fondo base, no blanco puro */
+  --color-surface-1-light: #f5f8ff;    /* Cards flotan sobre el fondo */
+  --color-surface-2-light: #dce5f4;    /* Elementos elevados con más contraste */
+  --color-text-light:      #0f1923;
+  --color-text-muted-light: #4a5568;
+  --color-border-light:    rgba(31, 96, 168, 0.22);
 
   /* Spacing / Radius */
   --radius-sm: 8px;
@@ -107,8 +107,8 @@ html {
 }
 
 html.light .glass {
-  background: rgba(255, 255, 255, 0.80);
-  border-color: rgba(42, 109, 181, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(31, 96, 168, 0.20);
 }
 
 /* === Gradient text — Blue → Silver/Ice === */

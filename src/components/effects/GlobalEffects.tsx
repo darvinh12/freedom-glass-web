@@ -57,8 +57,8 @@ function CustomCursor() {
       <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
       <style>{`
-        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;will-change:transform;mix-blend-mode:difference; }
-        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid #fff;border-radius:50%;pointer-events:none;z-index:9998;will-change:transform;transition:width .2s,height .2s,opacity .2s;opacity:.6;mix-blend-mode:difference; }
+        .cursor-dot { position:fixed;top:0;left:0;width:8px;height:8px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:difference; }
+        .cursor-ring { position:fixed;top:0;left:0;width:40px;height:40px;border:1.5px solid #fff;border-radius:50%;pointer-events:none;z-index:9998;transition:width .2s,height .2s,opacity .2s;opacity:.7;mix-blend-mode:difference; }
         .cursor-ring.hover { width:56px;height:56px;opacity:1; }
       `}</style>
     </>

@@ -9,7 +9,7 @@
    ============================================= */
 @theme {
   /* Typography */
-  --font-display: "Playfair Display", Georgia, serif;
+  --font-display: "Poppins", "Playfair Display", Georgia, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 
   /* === BRAND COLORS (originales) === */
